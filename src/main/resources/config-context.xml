@@ -1,0 +1,169 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:oxm="http://www.springframework.org/schema/oxm"
+	xmlns:stream="http://www.springframework.org/schema/integration/stream"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.3.xsd
+		http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/integration/stream http://www.springframework.org/schema/integration/stream/spring-integration-stream-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+		
+		<!-- Spring Integration core configuration -->
+ 		
+<!-- Spring Validation related beans -->
+<bean id="validator"
+    class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+    
+    
+
+<!-- We should not have duplicate JMX bean names we must resolve the names -->
+<context:mbean-export default-domain="com.asgard.core" registration="failOnExisting"/> 
+
+	<bean id="contextUtil" class="com.staples.asgard.core.util.ContextUtil" />
+
+	<!-- Custom Annotation Configuration - STARTS HERE -->
+	<context:component-scan base-package="com.staples.asgard.core">
+		<context:include-filter type="annotation" expression="com.staples.asgard.core.config.annotation.ConfigEnabled" />
+	</context:component-scan>
+
+	<bean id="configService" class="com.staples.asgard.core.config.service.ConfigServiceImpl" />
+
+	<bean id="configLoader" class="com.staples.asgard.core.config.loader.ConfigLoader">
+		<property name="configService" ref="configService" />
+	</bean>
+
+
+	<!-- Custom Annotation Configuration - ENDS HERE -->
+
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<value>file:///#{systemProperties['CONFIG_PATH']}/browse/properties/appConfig-#{systemProperties['Env']}.properties</value>
+			<!-- <value>file:///D:/config/browse/properties/appConfig-DEV.properties</value> -->
+		</property>
+	</bean>
+
+	<mongo:mongo host="${mongo.db.ip}" port="${mongo.db.port}" />
+
+	<!-- Offers convenience methods and automatic mapping between MongoDB JSON documents and your domain classes. -->
+	<bean class="org.springframework.data.mongodb.core.MongoTemplate" id="mongoTemplate">
+		<constructor-arg ref="mongo" />
+		<constructor-arg name="databaseName" value="${mongo.db.dbname}" />
+	</bean>
+
+	<!-- Message Source - STARTS HERE -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<!-- <value>file:///#{systemProperties['CONFIG_PATH']}/properties/environment/Environment-#{systemProperties['Env']}</value> -->
+				<value>file:///#{systemProperties['CONFIG_PATH']}/browse/properties/appConfig-#{systemProperties['Env']}</value>
+				<!-- <value>file:///D:/config/browse/properties/appConfig-DEV</value> -->
+			</list>
+		</property>
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="cacheSeconds" value="600" />
+	</bean>
+	<!-- Message Source - ENDS HERE -->
+
+<!-- Jackson-JSON configuration -->
+
+<bean id="jaxbAnnotationIntrospector" class="com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector" />
+<bean id="jsonbAnnotationIntrospector" class="com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector" />
+
+<bean id="annotationPair" class="com.fasterxml.jackson.databind.introspect.AnnotationIntrospectorPair">
+<constructor-arg ref="jsonbAnnotationIntrospector"></constructor-arg>
+<constructor-arg ref="jaxbAnnotationIntrospector"></constructor-arg>
+</bean>
+
+<bean id = "asgardJacksonObjectMapper" 
+      class="com.staples.asgard.core.util.AsgardJsonObjectMapper"       
+       p:annotationIntrospector-ref="annotationPair"
+        >
+         
+        
+        </bean>
+       
+
+      
+
+<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+    <property name="supportedMediaTypes" >
+    	<list>
+    		<value>application/json</value>
+     	</list>
+    </property>
+    <property name="objectMapper" >
+          <ref bean="asgardJacksonObjectMapper"/>
+   </property>
+ </bean>
+
+<bean id="serializingHttpMessageConverter" class="org.springframework.integration.http.converter.SerializingHttpMessageConverter"></bean>
+<bean id="multipartAwareFormHttpMessageConverter" class="org.springframework.integration.http.converter.MultipartAwareFormHttpMessageConverter"></bean>
+<bean id="byteArrayHttpMessageConverter" class="org.springframework.http.converter.ByteArrayHttpMessageConverter"></bean>
+<bean id="stringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter"></bean>
+<bean id="jaxb2RootElementHttpMessageConverter" class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter"></bean>
+<bean id="allEncompassingFormHttpMessageConverter" class="org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter"></bean>
+<bean id="objectToStringHttpMessageConverter" class="org.springframework.http.converter.ObjectToStringHttpMessageConverter">
+<constructor-arg name="conversionService" ref="defaultConversionService"></constructor-arg>
+</bean>  
+
+<bean id="defaultConversionService" class="org.springframework.core.convert.support.DefaultConversionService"/>
+ 
+      <util:list id="messageConverters">
+			<ref bean="serializingHttpMessageConverter"/>
+			<ref bean="jacksonMessageConverter"/>
+			<ref bean="multipartAwareFormHttpMessageConverter"/>
+			<ref bean="byteArrayHttpMessageConverter"/>
+			<ref bean="stringHttpMessageConverter"/>
+			<ref bean="jaxb2RootElementHttpMessageConverter"/>
+			<ref bean="allEncompassingFormHttpMessageConverter"/>
+			<ref bean="objectToStringHttpMessageConverter"/>			
+		</util:list>
+ 
+ <bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="jacksonMessageConverter" />
+			</list>
+		</property>
+</bean>
+       
+ <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="contentNegotiationManager">
+            <bean class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean"
+                  p:defaultContentType="application/json"
+                  p:favorParameter="false"
+                  p:favorPathExtension="false"
+                  p:ignoreAcceptHeader="true"
+                  >
+                  <property name="mediaTypes">
+					<map>
+						<entry key="json" value="application/json" />
+						<entry key="xml" value="application/xml" />
+					</map>
+				  </property>   
+                  </bean>
+        </property>
+        <property name="defaultViews">
+			<list>
+				<bean
+					class="com.staples.asgard.core.util.ExtendedMappingJacksonJsonView" >
+					<property name="objectMapper" ref="asgardJacksonObjectMapper"/>
+				</bean>
+				 
+			</list>
+		</property>       
+    </bean>
+ 		  
+<!-- Bean definition starts herer -->
+ 
+</beans>
