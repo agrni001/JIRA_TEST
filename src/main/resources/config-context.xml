@@ -23,7 +23,7 @@
 <bean id="validator"
     class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
     
-    
+ <mvc:annotation-driven />   
 
 <!-- We should not have duplicate JMX bean names we must resolve the names -->
 <context:mbean-export default-domain="com.asgard.core" registration="failOnExisting"/> 
