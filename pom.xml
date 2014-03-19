@@ -10,7 +10,7 @@
 		<groupId>com.staples.asgard</groupId>
 		<artifactId>asgard</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../java-build/pom.xml</relativePath>
+		<relativePath>../asgard-build/pom.xml</relativePath>
 	</parent>
 
 
