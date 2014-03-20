@@ -1,9 +1,8 @@
-package com.staples.asgard.core.domain.model;
+package com.staples.asgard.core.domain.model.inventory;
 
-import java.util.List;
+import java.lang.reflect.InvocationTargetException;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -12,12 +11,12 @@ import org.hibernate.validator.constraints.NotEmpty;
  * 
  * 
  * @author srani
+ * @author ubud
  * 
  */
-public class InventoryAvailabilityVO {
+public class OnlineInventoryInputVO {
 
 	@NotEmpty(message = "The zip-code field is mandatory.")
-	@Pattern(regexp = "[0-9]*", message = "Length of zip-code has to be minimum 5 and maximum 9 characters.")
 	@Size(min = 5, max = 5, message = "Length of zip-code has to be minimum 5 and maximum 9 characters.")
 	private String zipCode;
 
@@ -28,26 +27,48 @@ public class InventoryAvailabilityVO {
 	private String storeId;
 
 	@NotNull(message = "The sku list is mandatory.")
-	private List<SkuInventoryStatusVO> skuList;
+	private String skuList;
 
-	public InventoryAvailabilityVO(List<SkuInventoryStatusVO> skuVOList, String zipCode, String lookupType,
+	@NotNull(message = "The quantity list is mandatory.")	 
+	private String qtyList;
+	
+	@SuppressWarnings("unchecked")
+	public  OnlineInventoryInputVO(org.springframework.util.LinkedMultiValueMap requestParaMultiValueMap) {
+		super();
+		 
+			try {
+				org.apache.commons.beanutils.BeanUtils.populate(this, requestParaMultiValueMap);
+			} catch (IllegalAccessException e) {
+				
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				
+				e.printStackTrace();
+			}
+ 
+		 
+		 
+	}
+	
+	public OnlineInventoryInputVO(String skuList,String qtyList, String zipCode, String lookupType,
 			String storeNumber) {
 		super();
-		this.skuList = skuVOList;
+		this.skuList = skuList;
+		this.qtyList = qtyList;
 		this.zipCode = zipCode;
 		this.lookupType = lookupType;
 		this.storeId = storeNumber;
 	}
 
-	public InventoryAvailabilityVO() {
-
+	public OnlineInventoryInputVO() {
+			super();
 	}
 
-	public List<SkuInventoryStatusVO> getSkuList() {
+	public String getSkuList() {
 		return skuList;
 	}
 
-	public void setSkuList(List<SkuInventoryStatusVO> skuVOList) {
+	public void setSkuList(String skuVOList) {
 		this.skuList = skuVOList;
 	}
 
@@ -75,4 +96,12 @@ public class InventoryAvailabilityVO {
 		this.storeId = storeNumber;
 	}
 
+	public String getQtyList() {
+		return qtyList;
+	}
+
+	public void setQtyList(String qtyList) {
+		this.qtyList = qtyList;
+	}
+	   
 }

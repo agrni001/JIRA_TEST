@@ -548,4 +548,13 @@ public class StoreOnHandDetailType implements Serializable {
         this.stockLevel = value;
     }
 
+	@Override
+	public boolean equals(Object obj) {
+		 
+		return this.getAvailQty().equals(((StoreOnHandDetailType)obj).getAvailQty()) && 
+				this.getDistance().equals(((StoreOnHandDetailType)obj).getDistance());
+	}
+
+	 
+
 }

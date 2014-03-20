@@ -46,7 +46,7 @@
 
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
-			<value>file:///#{systemProperties['CONFIG_PATH']}/browse/properties/appConfig-#{systemProperties['Env']}.properties</value>
+			<value>classpath:config/browse/properties/appConfig-#{systemProperties['Env']}.properties</value>
 			<!-- <value>file:///D:/config/browse/properties/appConfig-DEV.properties</value> -->
 		</property>
 	</bean>
@@ -64,7 +64,7 @@
 		<property name="basenames">
 			<list>
 				<!-- <value>file:///#{systemProperties['CONFIG_PATH']}/properties/environment/Environment-#{systemProperties['Env']}</value> -->
-				<value>file:///#{systemProperties['CONFIG_PATH']}/browse/properties/appConfig-#{systemProperties['Env']}</value>
+				<value>classpath:config/browse/properties/appConfig-#{systemProperties['Env']}</value>
 				<!-- <value>file:///D:/config/browse/properties/appConfig-DEV</value> -->
 			</list>
 		</property>

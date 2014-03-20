@@ -1,4 +1,4 @@
-package com.staples.asgard.core.domain.model;
+package com.staples.asgard.core.domain.model.inventory;
 
 import java.util.Date;
 
@@ -11,15 +11,11 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @author srani
  * 
  */
-public class SkuInventoryStatusVO {
+public class SKUOnlineInventoryVO {
 
-	@NotEmpty(message = "The sku field is mandatory.")
-	@Size(min = 1, max = 20, message = "Length of sku has to be minimum 1 and maximum 20 characters.")
-	private String sku;
+ 	private String sku;
 
-	@NotNull(message = "The available quantity field is mandatory.")
-	@Size(min = 1, max = 7, message = "Length of available quantity has to be minimum 1 and maximum 7 characters.")
-	private Integer availableQuantity;
+ 	private Integer availableQuantity;
 	private Integer minLeadTime;
 	private Integer maxLeadTime;
 
@@ -29,14 +25,14 @@ public class SkuInventoryStatusVO {
 	private Integer maxDeliveryTime;
 	private Integer requestedQuantity;
 
-	public SkuInventoryStatusVO() {
+	public SKUOnlineInventoryVO() {
 
 	}
 
 	/**
 	 * @param sku
 	 */
-	public SkuInventoryStatusVO(String sku) {
+	public SKUOnlineInventoryVO(String sku) {
 		super();
 		this.sku = sku;
 	}
@@ -45,7 +41,7 @@ public class SkuInventoryStatusVO {
 	 * @param sku
 	 * @param requestedQuantity
 	 */
-	public SkuInventoryStatusVO(String sku, Integer requestedQuantity) {
+	public SKUOnlineInventoryVO(String sku, Integer requestedQuantity) {
 		super();
 		this.sku = sku;
 		this.requestedQuantity = requestedQuantity;
@@ -62,7 +58,7 @@ public class SkuInventoryStatusVO {
 	 * @param maxDeliveryTime
 	 * @param requestedQuantity
 	 */
-	public SkuInventoryStatusVO(String sku, Integer availableQuantity, Integer minLeadTime, Integer maxLeadTime,
+	public SKUOnlineInventoryVO(String sku, Integer availableQuantity, Integer minLeadTime, Integer maxLeadTime,
 			Date minDeliveryDate, Date maxDeliveryDate, Integer minDeliveryTime, Integer maxDeliveryTime,
 			Integer requestedQuantity) {
 		super();
