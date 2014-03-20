@@ -5,12 +5,11 @@
 	<packaging>jar</packaging>
 	<name>Asgard Java Framework</name>
 	<description>Asgard Core Library</description>
-	
+
 	<parent>
 		<groupId>com.staples.asgard</groupId>
 		<artifactId>asgard</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../asgard-build/pom.xml</relativePath>
 	</parent>
 
 
@@ -59,17 +58,17 @@
 			<artifactId>spring-integration-ws</artifactId>
 			<version>${spring.integration.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.integration</groupId>
 			<artifactId>spring-integration-stream</artifactId>
 			<version>${spring.integration.version}</version>
 		</dependency>
-		 
+
 
 	</dependencies>
 	<build>
 		<finalName>asgard-core</finalName>
 	</build>
-	 
+
 </project>  
