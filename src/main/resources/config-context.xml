@@ -23,10 +23,24 @@
 <bean id="validator"
     class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
     
- <mvc:annotation-driven />   
+ <mvc:annotation-driven />  
+ 
+ <!-- Any of the call going out to IG Should not take more than 5 sec to process in any case-->
+  		<bean id="IGRequestFactory" class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
+			<property name="readTimeout" value="#{CoreConfig.integrationGatewayReadTimeout}"/>
+			<property name="connectTimeout" value="#{CoreConfig.integrationGatewayConnectTimeout}"/>
+		</bean> 
 
-<!-- We should not have duplicate JMX bean names we must resolve the names -->
-<context:mbean-export default-domain="com.staples.asgard.core" registration="failOnExisting"/> 
+	<!-- Set up jmx bean auto scanning -->
+	<!-- Note: we're not using <context:mbean-export /> because we need to provide our own naming strategy -->
+	<!-- All the JMX beans we define in Core package need to provide its functionality specific to the end Web application. -->
+	<!-- AsgardJMXNamingStrategy adds the app attribute dynamically to the JMX context so that naming collision does not happen -->
+	<bean id="mbeanExporter" class="org.springframework.jmx.export.annotation.AnnotationMBeanExporter">
+	    <property name="namingStrategy">
+	        <bean class="com.staples.asgard.core.config.util.AsgardJMXNamingStrategy"/> 
+	    </property>
+	</bean>
+
 
 	<bean id="contextUtil" class="com.staples.asgard.core.util.ContextUtil" />
 
@@ -40,6 +54,8 @@
 	<bean id="configLoader" class="com.staples.asgard.core.config.loader.ConfigLoader">
 		<property name="configService" ref="configService" />
 	</bean>
+	
+	
 
 
 	<!-- Custom Annotation Configuration - ENDS HERE -->
