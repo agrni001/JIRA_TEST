@@ -7,7 +7,8 @@
 		**************************************************************				 
 	-->
 		<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">      
-			<param name="Target" value="System.out" /> 
+			<param name="Target" value="System.out" />        
+			<param name="Threshold" value="DEBUG"/>
 			<layout class="org.apache.log4j.PatternLayout">   
 				<param name="ConversionPattern" value="%d{ABSOLUTE} | %-5p | %x | %t | %c | %m%n" />         
 			</layout>
@@ -20,9 +21,7 @@
 				<param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss,SSS} [%t] %c %x %p- %m%n" />
 			</layout>						
         	</appender>
-		
-		
-		
+		 
 		<appender name="DEBUG" class="org.apache.log4j.RollingFileAppender">
 			<param name="file" value="${catalina.home}/logs/browse-debug.log" />
             <param name="append" value="true" />
@@ -75,26 +74,20 @@
 		**************************************************************				 
 	-->
 	<logger name="com.staples" additivity="false">
-		<level value="DEBUG" />
+		<level value="INFO" />
 		<appender-ref ref="DEBUG" />
- 		<appender-ref ref="CONSOLE" />
- 		<appender-ref ref="EXCEPTION" />
+		<appender-ref ref="EXCEPTION" />
+		<appender-ref ref="CONSOLE" />
 	</logger>
 	
 	<logger name="com.staples.asgard.core.logger.BaseLoggingInterceptor" additivity="false">
-		<level value="DEBUG" />
+		<level value="INFO" />
 		<appender-ref ref="SYSTEM" />
 		<appender-ref ref="EXCEPTION" />
 		<appender-ref ref="CONSOLE" />
 	</logger>
 	   
-	<!-- 3rdparty Loggers -->
 	 
-	<logger name="org.springframework" additivity="false">
-		<level value="DEBUG" />
-		<appender-ref ref="CONSOLE" />
-	</logger>
-   
    <!-- 
 		**************************************************************
 				 			END - LOGGERS

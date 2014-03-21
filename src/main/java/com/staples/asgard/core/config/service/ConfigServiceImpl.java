@@ -1,5 +1,9 @@
 package com.staples.asgard.core.config.service;
 
+import static com.staples.asgard.core.constants.GlobalConstants.DEFAULT_SERVER_ID;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -72,7 +76,51 @@ public class ConfigServiceImpl implements ConfigService {
 				log.debug("Failed to Update records for {} Server Id", currentServerId);
 			}
 			
-		} else {			
+		} else {	
+			
+			/* Retrieve all the data from the DataBase for the current Server ID */
+			List<AppConfig> listOfConfigForDefaultServer = configDao.getAllConfigForServerId(DEFAULT_SERVER_ID);
+			
+			//following configuration makes sure that all DEFAULT config are copied to current server
+			//this is done only if the count of config is mismatch
+			//for fool proof implementation this check should not be made.
+			//performance improvement can be done but as this runs only once, it should be fine
+			
+			if (listOfConfigForDefaultServer.size() > listOfCurrentServerId.size()) {
+				//there are some setting that are NOT available for the server
+				log.debug("{} is found in AppConfig table but NOT ALL settings Found", currentServerId);
+				
+				List<AppConfig> missingConfig = new ArrayList<AppConfig>();
+				
+				Iterator<AppConfig> defaultAppConfigsIterator = listOfConfigForDefaultServer.iterator();
+				
+				while(defaultAppConfigsIterator.hasNext()) {
+					AppConfig defaultConfig = defaultAppConfigsIterator.next();
+					
+					Iterator<AppConfig> currentAppConfigsIterator = listOfConfigForDefaultServer.iterator();
+					boolean found=false;
+					
+					while(currentAppConfigsIterator.hasNext()) {
+						AppConfig currentConfig = currentAppConfigsIterator.next();
+						if (currentConfig.getBeanId().equalsIgnoreCase(defaultConfig.getBeanId()) &&
+								currentConfig.getConfigKey().equalsIgnoreCase(defaultConfig.getConfigKey())	){
+							found=true;
+							break;
+						}
+							
+					}
+					
+					if (!found) {
+						missingConfig.add(defaultConfig);
+					}
+				}
+				
+				if (missingConfig.size()>0) {
+					configDao.insertConfigDetails(currentServerId, missingConfig);
+				}
+				 
+			}
+			
 			log.debug("{} is found in AppConfig table so no serverId updatation is required", currentServerId);
 		}
 			

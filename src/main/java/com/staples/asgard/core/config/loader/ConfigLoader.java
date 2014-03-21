@@ -110,7 +110,7 @@ public class ConfigLoader implements BeanPostProcessor {
 		 */
 		/* If bean is @ConfigEnabled then process */
 		if (bean.getClass().isAnnotationPresent(ConfigEnabled.class) && null!=ConfigUtil.getServerId()) {
-			log.info("In postProcessAfterInitialization() processing Config Enabled Bean");
+			log.info("In postProcessAfterInitialization() processing Config Enabled Bean = {}",bean.getClass().getName());
 			
 			List<AppConfig> listOfConfigsForDefaultServer = configService.getAllConfigDetailsForBeanId(DEFAULT_SERVER_ID, beanName);
 				
@@ -181,12 +181,15 @@ public class ConfigLoader implements BeanPostProcessor {
 								 */
 								if (field.isAnnotationPresent(ConfigAttribute.class)) {
 									field.setAccessible(true);
+									String name= field.getName().toLowerCase();
 	
 									/* before setting the field test for which class it belongs to and convert it to the respective type */
-									if (field.getType().isAssignableFrom(String.class) && null != mapOfConfigDetails.get(field.getName())) {
-										field.set(bean, mapOfConfigDetails.get(field.getName()));										
-									} else if (field.getType().isAssignableFrom(int.class) && null != mapOfConfigDetails.get(field.getName())) {
-										field.set(bean, Integer.parseInt(mapOfConfigDetails.get(field.getName()).toString()));
+									if (field.getType().isAssignableFrom(String.class) && null != mapOfConfigDetails.get(name)) {
+										field.set(bean, mapOfConfigDetails.get(name));										
+									} else if (field.getType().isAssignableFrom(int.class) && null != mapOfConfigDetails.get(name)) {
+										field.set(bean, Integer.parseInt(mapOfConfigDetails.get(name)));
+									}else if (field.getType().isAssignableFrom(boolean.class) && null != mapOfConfigDetails.get(name)) {
+										field.set(bean, Boolean.parseBoolean(mapOfConfigDetails.get(name)));
 									}
 											
 								} else if (field.isAnnotationPresent(InitializedAttribute.class)) {
@@ -247,10 +250,10 @@ public class ConfigLoader implements BeanPostProcessor {
 	 * @throws DatabaseException
 	 */
 	public Map<String, String> fetchConfigDetailsFromList(final List<AppConfig> listOfConfigDetails) {
+		
 		Map<String, String> mapOfConfigDetails = new HashMap<String, String>();
-
 		for (AppConfig config : listOfConfigDetails) {
-			mapOfConfigDetails.put(config.getConfigKey(),
+			mapOfConfigDetails.put(config.getConfigKey().toLowerCase(),
 					config.getConfigValue());
 		}
 
@@ -287,7 +290,7 @@ public class ConfigLoader implements BeanPostProcessor {
 								
 		for (Iterator<AppConfig> iterator = listOfConfigsForDefaultServer.iterator(); iterator.hasNext(); ) {
 			AppConfig config = iterator.next();
-			if(null!=mapOfConfigDetailsForCurrentServer && null != mapOfConfigDetailsForCurrentServer.get(config.getConfigKey())) {
+			if(null!=mapOfConfigDetailsForCurrentServer && null != mapOfConfigDetailsForCurrentServer.get(config.getConfigKey().toLowerCase())) {
 				iterator.remove();
 			}
 		}

@@ -1,7 +1,5 @@
 package com.staples.asgard.core.logging.logger;
 
-import static com.staples.asgard.core.constants.GlobalConstants.ZIPCODE;
-
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,10 +44,7 @@ public class BaseLoggingInterceptor {
 		boolean isMethodEntryExitEnabled = Boolean.valueOf(messageSource.getMessage(GlobalConstants.METHOD_LEVEL_TRACE, null,
 				GlobalConstants.FALSE_STRING, null));
 		boolean isMethodPerfEnabled = Boolean.valueOf(messageSource.getMessage(GlobalConstants.PERF_TRACE, null, GlobalConstants.FALSE_STRING, null));
-
-		
-		messageSource.getMessage(ZIPCODE, null, null, null);
-		
+ 
 		Class<? extends Object> targetClass = pjp.getTarget().getClass();
 		String methodName = null;
 		String methodArgsAsString = convertObjectArrayToString(pjp.getArgs());
