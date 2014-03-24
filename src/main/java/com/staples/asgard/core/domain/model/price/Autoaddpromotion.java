@@ -1,14 +1,21 @@
 package com.staples.asgard.core.domain.model.price;
 
-public class Autoaddpromotion {
-	private java.lang.String couponCode;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-	public void setCouponCode(java.lang.String couponCode) {
-		this.couponCode = couponCode;
+@JsonAutoDetect(getterVisibility = Visibility.PUBLIC_ONLY, setterVisibility = Visibility.PUBLIC_ONLY, fieldVisibility = Visibility.PUBLIC_ONLY)
+@JsonInclude(Include.NON_NULL)
+public class Autoaddpromotion {
+	private java.lang.String code;
+
+	public void setCode(java.lang.String code) {
+		this.code = code;
 	}
 
-	public java.lang.String getCouponCode() {
-		return couponCode;
+	public java.lang.String getCode() {
+		return code;
 	}
 
 	private java.lang.Integer couponvalue;

@@ -1,19 +1,18 @@
-
 package com.staples.asgard.core.domain.model;
 
 import java.util.List;
 import java.util.Locale;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 /**
  * @author srani
  * 
  */
-@JsonAutoDetect(getterVisibility=Visibility.PUBLIC_ONLY,setterVisibility=Visibility.PUBLIC_ONLY,fieldVisibility=Visibility.PUBLIC_ONLY)
+@JsonAutoDetect(getterVisibility = Visibility.PUBLIC_ONLY, setterVisibility = Visibility.PUBLIC_ONLY, fieldVisibility = Visibility.PUBLIC_ONLY)
 @JsonInclude(Include.NON_NULL)
 public class PriceRequestVO {
 	private String tenant = null;
@@ -22,6 +21,8 @@ public class PriceRequestVO {
 	private String geoZoneId = null;
 	private String topCustomerZoneId = null;
 	private String privateSavingId = null;
+
+	private String defaultZoneId = null;
 
 	private List<SKURequestVO> skuList = null;
 	private int testDataType = -1;
@@ -117,7 +118,6 @@ public class PriceRequestVO {
 	/**
 	 * @return
 	 */
-
 	public List<SKURequestVO> getSkuList() {
 		return skuList;
 	}
@@ -125,7 +125,6 @@ public class PriceRequestVO {
 	/**
 	 * @param skuList
 	 */
-
 	public void setSkuList(List<SKURequestVO> skuList) {
 		this.skuList = skuList;
 	}
@@ -136,6 +135,14 @@ public class PriceRequestVO {
 
 	public void setTestDataType(int type) {
 		this.testDataType = type;
+	}
+
+	public String getDefaultZoneId() {
+		return defaultZoneId;
+	}
+
+	public void setDefaultZoneId(String defaultZoneId) {
+		this.defaultZoneId = defaultZoneId;
 	}
 
 }

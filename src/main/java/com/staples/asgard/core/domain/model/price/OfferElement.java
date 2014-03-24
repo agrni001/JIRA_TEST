@@ -3,7 +3,13 @@
 
 package com.staples.asgard.core.domain.model.price;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+@JsonAutoDetect(getterVisibility = Visibility.PUBLIC_ONLY, setterVisibility = Visibility.PUBLIC_ONLY, fieldVisibility = Visibility.PUBLIC_ONLY)
+@JsonInclude(Include.NON_NULL)
 public class OfferElement {
 	private java.lang.String tradeposcn_id;
 
@@ -73,6 +79,16 @@ public class OfferElement {
 
 	public String getPrice() {
 		return price;
+	}
+
+	private java.lang.Integer precedence;
+
+	public void setPrecedence(java.lang.Integer precedence) {
+		this.precedence = precedence;
+	}
+
+	public java.lang.Integer getPrecedence() {
+		return precedence;
 	}
 
 }

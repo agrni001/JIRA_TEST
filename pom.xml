@@ -65,7 +65,6 @@
 			<version>${spring.integration.version}</version>
 		</dependency>
 
-
 	</dependencies>
 	<build>
 		<finalName>asgard-core</finalName>

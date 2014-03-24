@@ -22,9 +22,6 @@
 
 	<mvc:annotation-driven />
 
-
-	<bean id="priceRepository" class="com.staples.asgard.price.repository.PriceRepository" /> 
-
 	<!-- We should not have duplicate JMX bean names we must resolve the names -->
 	<context:mbean-export default-domain="com.asgard.core"
 		registration="failOnExisting" />

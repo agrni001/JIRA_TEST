@@ -3,7 +3,6 @@ package com.staples.asgard.core.constants;
 import java.math.RoundingMode;
 
 public class PriceConstants {
-	public static final String STAPLES_CATENT_ASSORTMENT_CODE_MARKETPLACE = "002";
 	public static final String DEFAULT_PRICE = "9999999999.99";
 	public static final String DEFAULT_UOM = "EACH";
 
@@ -13,7 +12,7 @@ public class PriceConstants {
 	public static final String DATE_FORMAT = "EEE MMM dd HH:mm:ss z yyyy";
 
 	// TODO move to property file.
-	public static final String default_zone = "25";
+	public static final String DEFAULT_ZONE = "25";
 
 	public static final int DEFAULT_SCALE = 2;
 	public static final RoundingMode DEFAULT_RM = RoundingMode.HALF_DOWN;
