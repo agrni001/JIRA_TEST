@@ -1,4 +1,4 @@
-package com.staples.asgard.core.domain.model;
+package com.staples.asgard.core.domain.model.price;
 
 import java.util.List;
 import java.util.Locale;

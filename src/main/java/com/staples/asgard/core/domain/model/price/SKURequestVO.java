@@ -1,4 +1,4 @@
-package com.staples.asgard.core.domain.model;
+package com.staples.asgard.core.domain.model.price;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
