@@ -1,4 +1,4 @@
-package com.staples.asgard.core.domain.model.price;
+package com.staples.asgard.browse.price.vo;
 
 import java.util.ArrayList;
 
@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.staples.asgard.core.domain.model.price.Promotion;
+import com.staples.asgard.core.domain.model.price.Rebate;
+import com.staples.asgard.core.domain.model.price.Value;
 
 /**
  * @author srani
