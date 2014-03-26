@@ -22,14 +22,34 @@
 
 	<mvc:annotation-driven />
 
-	<!-- We should not have duplicate JMX bean names we must resolve the names -->
-	<context:mbean-export default-domain="com.asgard.core"
-		registration="failOnExisting" />
+	<!-- Any of the call going out to IG Should not take more than 5 sec to 
+		process in any case -->
+	<bean id="IGRequestFactory"
+		class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
+		<property name="readTimeout" value="#{CoreConfig.integrationGatewayReadTimeout}" />
+		<property name="connectTimeout"
+			value="#{CoreConfig.integrationGatewayConnectTimeout}" />
+	</bean>
+
+	<!-- Set up jmx bean auto scanning -->
+	<!-- Note: we're not using <context:mbean-export /> because we need to provide 
+		our own naming strategy -->
+	<!-- All the JMX beans we define in Core package need to provide its functionality 
+		specific to the end Web application. -->
+	<!-- AsgardJMXNamingStrategy adds the app attribute dynamically to the JMX 
+		context so that naming collision does not happen -->
+	<bean id="mbeanExporter"
+		class="org.springframework.jmx.export.annotation.AnnotationMBeanExporter">
+		<property name="namingStrategy">
+			<bean class="com.staples.asgard.core.config.util.AsgardJMXNamingStrategy" />
+		</property>
+	</bean>
+
 
 	<bean id="contextUtil" class="com.staples.asgard.core.util.ContextUtil" />
 
 	<!-- Custom Annotation Configuration - STARTS HERE -->
-	<context:component-scan base-package="com.staples.asgard.core">
+	<context:component-scan base-package="com.staples.asgard.*">
 		<context:include-filter type="annotation"
 			expression="com.staples.asgard.core.config.annotation.ConfigEnabled" />
 	</context:component-scan>
@@ -42,14 +62,15 @@
 	</bean>
 
 
+
+
 	<!-- Custom Annotation Configuration - ENDS HERE -->
 
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
-			<value>file:///#{systemProperties['CONFIG_PATH']}/browse/properties/appConfig-#{systemProperties['Env']}.properties
+			<value>classpath:config/browse/properties/appConfig-#{systemProperties['Env']}.properties
 			</value>
-			<!-- <value>file:///D:/config/browse/properties/appConfig-DEV.properties</value> -->
 		</property>
 	</bean>
 
@@ -68,10 +89,8 @@
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basenames">
 			<list>
-				<!-- <value>file:///#{systemProperties['CONFIG_PATH']}/properties/environment/Environment-#{systemProperties['Env']}</value> -->
-				<value>file:///#{systemProperties['CONFIG_PATH']}/browse/properties/appConfig-#{systemProperties['Env']}
+				<value>classpath:config/browse/properties/appConfig-#{systemProperties['Env']}
 				</value>
-				<!-- <value>file:///D:/config/browse/properties/appConfig-DEV</value> -->
 			</list>
 		</property>
 		<property name="defaultEncoding" value="UTF-8" />
@@ -113,36 +132,6 @@
 		</property>
 	</bean>
 
-	<bean id="serializingHttpMessageConverter"
-		class="org.springframework.integration.http.converter.SerializingHttpMessageConverter"></bean>
-	<bean id="multipartAwareFormHttpMessageConverter"
-		class="org.springframework.integration.http.converter.MultipartAwareFormHttpMessageConverter"></bean>
-	<bean id="byteArrayHttpMessageConverter"
-		class="org.springframework.http.converter.ByteArrayHttpMessageConverter"></bean>
-	<bean id="stringHttpMessageConverter"
-		class="org.springframework.http.converter.StringHttpMessageConverter"></bean>
-	<bean id="jaxb2RootElementHttpMessageConverter"
-		class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter"></bean>
-	<bean id="allEncompassingFormHttpMessageConverter"
-		class="org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter"></bean>
-	<bean id="objectToStringHttpMessageConverter"
-		class="org.springframework.http.converter.ObjectToStringHttpMessageConverter">
-		<constructor-arg name="conversionService" ref="defaultConversionService"></constructor-arg>
-	</bean>
-
-	<bean id="defaultConversionService"
-		class="org.springframework.core.convert.support.DefaultConversionService" />
-
-	<util:list id="messageConverters">
-		<ref bean="serializingHttpMessageConverter" />
-		<ref bean="jacksonMessageConverter" />
-		<ref bean="multipartAwareFormHttpMessageConverter" />
-		<ref bean="byteArrayHttpMessageConverter" />
-		<ref bean="stringHttpMessageConverter" />
-		<ref bean="jaxb2RootElementHttpMessageConverter" />
-		<ref bean="allEncompassingFormHttpMessageConverter" />
-		<ref bean="objectToStringHttpMessageConverter" />
-	</util:list>
 
 	<bean
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
@@ -179,5 +168,4 @@
 	</bean>
 
 	<!-- Bean definition starts herer -->
-
 </beans>
