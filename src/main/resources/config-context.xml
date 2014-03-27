@@ -1,12 +1,9 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:oxm="http://www.springframework.org/schema/oxm"
-	xmlns:stream="http://www.springframework.org/schema/integration/stream"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:oxm="http://www.springframework.org/schema/oxm" xmlns:stream="http://www.springframework.org/schema/integration/stream"
 	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.3.xsd
 		http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.2.xsd
@@ -16,29 +13,36 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
-		
-		<!-- Spring Integration core configuration -->
- 		
-<!-- Spring Validation related beans -->
-<bean id="validator"
-    class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
-    
- <mvc:annotation-driven />  
- 
- <!-- Any of the call going out to IG Should not take more than 5 sec to process in any case-->
-  		<bean id="IGRequestFactory" class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
-			<property name="readTimeout" value="#{CoreConfig.integrationGatewayReadTimeout}"/>
-			<property name="connectTimeout" value="#{CoreConfig.integrationGatewayConnectTimeout}"/>
-		</bean> 
+
+	<!-- Spring Integration core configuration -->
+
+	<!-- Spring Validation related beans -->
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+
+	<mvc:annotation-driven />
+
+	<!-- Any of the call going out to IG Should not take more than 5 sec to 
+		process in any case -->
+	<bean id="IGRequestFactory"
+		class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
+		<property name="readTimeout" value="#{CoreConfig.integrationGatewayReadTimeout}" />
+		<property name="connectTimeout"
+			value="#{CoreConfig.integrationGatewayConnectTimeout}" />
+	</bean>
 
 	<!-- Set up jmx bean auto scanning -->
-	<!-- Note: we're not using <context:mbean-export /> because we need to provide our own naming strategy -->
-	<!-- All the JMX beans we define in Core package need to provide its functionality specific to the end Web application. -->
-	<!-- AsgardJMXNamingStrategy adds the app attribute dynamically to the JMX context so that naming collision does not happen -->
-	<bean id="mbeanExporter" class="org.springframework.jmx.export.annotation.AnnotationMBeanExporter">
-	    <property name="namingStrategy">
-	        <bean class="com.staples.asgard.core.config.util.AsgardJMXNamingStrategy"/> 
-	    </property>
+	<!-- Note: we're not using <context:mbean-export /> because we need to provide 
+		our own naming strategy -->
+	<!-- All the JMX beans we define in Core package need to provide its functionality 
+		specific to the end Web application. -->
+	<!-- AsgardJMXNamingStrategy adds the app attribute dynamically to the JMX 
+		context so that naming collision does not happen -->
+	<bean id="mbeanExporter"
+		class="org.springframework.jmx.export.annotation.AnnotationMBeanExporter">
+		<property name="namingStrategy">
+			<bean class="com.staples.asgard.core.config.util.AsgardJMXNamingStrategy" />
+		</property>
 	</bean>
 
 
@@ -46,115 +50,122 @@
 
 	<!-- Custom Annotation Configuration - STARTS HERE -->
 	<context:component-scan base-package="com.staples.asgard.*">
-		<context:include-filter type="annotation" expression="com.staples.asgard.core.config.annotation.ConfigEnabled" />
+		<context:include-filter type="annotation"
+			expression="com.staples.asgard.core.config.annotation.ConfigEnabled" />
 	</context:component-scan>
 
-	<bean id="configService" class="com.staples.asgard.core.config.service.ConfigServiceImpl" />
+	<bean id="configService"
+		class="com.staples.asgard.core.config.service.ConfigServiceImpl" />
 
 	<bean id="configLoader" class="com.staples.asgard.core.config.loader.ConfigLoader">
 		<property name="configService" ref="configService" />
 	</bean>
-	
-	
+
+
 
 
 	<!-- Custom Annotation Configuration - ENDS HERE -->
 
-	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
-			<value>classpath:config/browse/properties/appConfig-#{systemProperties['Env']}.properties</value>
- 		</property>
+			<value>classpath:config/browse/properties/appConfig-#{systemProperties['Env']}.properties
+			</value>
+		</property>
 	</bean>
 
 	<mongo:mongo host="${mongo.db.ip}" port="${mongo.db.port}" />
 
-	<!-- Offers convenience methods and automatic mapping between MongoDB JSON documents and your domain classes. -->
-	<bean class="org.springframework.data.mongodb.core.MongoTemplate" id="mongoTemplate">
+	<!-- Offers convenience methods and automatic mapping between MongoDB JSON 
+		documents and your domain classes. -->
+	<bean class="org.springframework.data.mongodb.core.MongoTemplate"
+		id="mongoTemplate">
 		<constructor-arg ref="mongo" />
 		<constructor-arg name="databaseName" value="${mongo.db.dbname}" />
 	</bean>
 
 	<!-- Message Source - STARTS HERE -->
-	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basenames">
 			<list>
- 				<value>classpath:config/browse/properties/appConfig-#{systemProperties['Env']}</value>
- 			</list>
+				<value>classpath:config/browse/properties/appConfig-#{systemProperties['Env']}
+				</value>
+			</list>
 		</property>
 		<property name="defaultEncoding" value="UTF-8" />
 		<property name="cacheSeconds" value="600" />
 	</bean>
 	<!-- Message Source - ENDS HERE -->
 
-<!-- Jackson-JSON configuration -->
+	<!-- Jackson-JSON configuration -->
 
-<bean id="jaxbAnnotationIntrospector" class="com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector" />
-<bean id="jsonbAnnotationIntrospector" class="com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector" />
+	<bean id="jaxbAnnotationIntrospector"
+		class="com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector" />
+	<bean id="jsonbAnnotationIntrospector"
+		class="com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector" />
 
-<bean id="annotationPair" class="com.fasterxml.jackson.databind.introspect.AnnotationIntrospectorPair">
-<constructor-arg ref="jsonbAnnotationIntrospector"></constructor-arg>
-<constructor-arg ref="jaxbAnnotationIntrospector"></constructor-arg>
-</bean>
+	<bean id="annotationPair"
+		class="com.fasterxml.jackson.databind.introspect.AnnotationIntrospectorPair">
+		<constructor-arg ref="jsonbAnnotationIntrospector"></constructor-arg>
+		<constructor-arg ref="jaxbAnnotationIntrospector"></constructor-arg>
+	</bean>
 
-<bean id = "asgardJacksonObjectMapper" 
-      class="com.staples.asgard.core.util.AsgardJsonObjectMapper"       
-       p:annotationIntrospector-ref="annotationPair"
-        >
-         
-        
-        </bean>
-       
+	<bean id="asgardJacksonObjectMapper" class="com.staples.asgard.core.util.AsgardJsonObjectMapper"
+		p:annotationIntrospector-ref="annotationPair">
 
-      
 
-<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-    <property name="supportedMediaTypes" >
-    	<list>
-    		<value>application/json</value>
-     	</list>
-    </property>
-    <property name="objectMapper" >
-          <ref bean="asgardJacksonObjectMapper"/>
-   </property>
- </bean>
+	</bean>
 
- 
- <bean
+
+
+
+	<bean id="jacksonMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>application/json</value>
+			</list>
+		</property>
+		<property name="objectMapper">
+			<ref bean="asgardJacksonObjectMapper" />
+		</property>
+	</bean>
+
+
+	<bean
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 		<property name="messageConverters">
 			<list>
 				<ref bean="jacksonMessageConverter" />
 			</list>
 		</property>
-</bean>
-       
- <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-        <property name="contentNegotiationManager">
-            <bean class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean"
-                  p:defaultContentType="application/json"
-                  p:favorParameter="false"
-                  p:favorPathExtension="false"
-                  p:ignoreAcceptHeader="true"
-                  >
-                  <property name="mediaTypes">
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="contentNegotiationManager">
+			<bean
+				class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean"
+				p:defaultContentType="application/json" p:favorParameter="false"
+				p:favorPathExtension="false" p:ignoreAcceptHeader="true">
+				<property name="mediaTypes">
 					<map>
 						<entry key="json" value="application/json" />
 						<entry key="xml" value="application/xml" />
 					</map>
-				  </property>   
-                  </bean>
-        </property>
-        <property name="defaultViews">
+				</property>
+			</bean>
+		</property>
+		<property name="defaultViews">
 			<list>
-				<bean
-					class="com.staples.asgard.core.util.ExtendedMappingJacksonJsonView" >
-					<property name="objectMapper" ref="asgardJacksonObjectMapper"/>
+				<bean class="com.staples.asgard.core.util.ExtendedMappingJacksonJsonView">
+					<property name="objectMapper" ref="asgardJacksonObjectMapper" />
 				</bean>
-				 
+
 			</list>
-		</property>       
-    </bean>
- 		  
-<!-- Bean definition starts herer -->
- 
+		</property>
+	</bean>
+
+	<!-- Bean definition starts herer -->
 </beans>
