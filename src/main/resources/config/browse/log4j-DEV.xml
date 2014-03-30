@@ -82,7 +82,7 @@
 	</logger>
 	
 	<logger name="com.staples.asgard.core.logger.BaseLoggingInterceptor" additivity="false">
-		<level value="DEBUG" />
+		<level value="INFO" />
 		<appender-ref ref="SYSTEM" />
 		<appender-ref ref="EXCEPTION" />
 		<appender-ref ref="CONSOLE" />

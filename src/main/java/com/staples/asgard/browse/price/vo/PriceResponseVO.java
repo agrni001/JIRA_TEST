@@ -6,6 +6,10 @@ import static com.staples.asgard.core.constants.PriceConstants.DEFAULT_SCALE;
 import java.math.BigDecimal;
 import java.util.List;
 
+import com.staples.asgard.core.domain.model.price.Autoaddpromotion;
+import com.staples.asgard.core.domain.model.price.PromoMessage;
+import com.staples.asgard.core.domain.model.price.Rebate;
+
 /**
  * @author srani
  * 
@@ -27,9 +31,9 @@ public class PriceResponseVO {
 	private boolean seePriceInCartOnly = false;
 
 	private List<BuyMoreSaveMoreVO> buyMoreSaveMoreDetail = null;
-	private List<PromotionVO> promotion = null;
-	private List<CouponVO> coupon = null;
-	private List<RebateVO> rebate = null;
+	private List<PromoMessage> promotion = null;
+	private Autoaddpromotion coupon = null;
+	private List<Rebate> rebate = null;
 
 	private String unitOfMeasure = null;
 
@@ -106,27 +110,27 @@ public class PriceResponseVO {
 		this.buyMoreSaveMoreDetail = buyMoreSaveMoreDetail;
 	}
 
-	public List<PromotionVO> getPromotion() {
+	public List<PromoMessage> getPromotion() {
 		return promotion;
 	}
 
-	public void setPromotion(List<PromotionVO> promotion) {
+	public void setPromotion(List<PromoMessage> promotion) {
 		this.promotion = promotion;
 	}
 
-	public List<CouponVO> getCoupon() {
+	public Autoaddpromotion getCoupon() {
 		return coupon;
 	}
 
-	public void setCoupon(List<CouponVO> coupon) {
+	public void setCoupon(Autoaddpromotion coupon) {
 		this.coupon = coupon;
 	}
 
-	public List<RebateVO> getRebate() {
+	public List<Rebate> getRebate() {
 		return rebate;
 	}
 
-	public void setRebate(List<RebateVO> rebate) {
+	public void setRebate(List<Rebate> rebate) {
 		this.rebate = rebate;
 	}
 

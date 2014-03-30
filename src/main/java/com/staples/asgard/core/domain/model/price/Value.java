@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 /**
  * @author srani
- *
+ * 
  */
 @JsonAutoDetect(getterVisibility = Visibility.PUBLIC_ONLY, setterVisibility = Visibility.PUBLIC_ONLY, fieldVisibility = Visibility.PUBLIC_ONLY)
 @JsonInclude(Include.NON_NULL)
@@ -30,16 +30,6 @@ public class Value {
 
 	public void setZone_id(java.lang.String zone_id) {
 		this.zone_id = zone_id;
-	}
-
-	private java.lang.String zone_name;
-
-	public void setZone_name(java.lang.String zone_name) {
-		this.zone_name = zone_name;
-	}
-
-	public java.lang.String getZone_name() {
-		return zone_name;
 	}
 
 	private java.lang.Integer precedence;

@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 /**
  * @author srani
- *
+ * 
  */
 @JsonAutoDetect(getterVisibility = Visibility.PUBLIC_ONLY, setterVisibility = Visibility.PUBLIC_ONLY, fieldVisibility = Visibility.PUBLIC_ONLY)
 @JsonInclude(Include.NON_NULL)
@@ -22,13 +22,13 @@ public class Rebate {
 		return value;
 	}
 
-	private java.lang.Integer type;
+	private long type;
 
-	public void setType(java.lang.Integer type) {
+	public void setType(long type) {
 		this.type = type;
 	}
 
-	public java.lang.Integer getType() {
+	public long getType() {
 		return type;
 	}
 
@@ -42,13 +42,13 @@ public class Rebate {
 		return document;
 	}
 
-	private java.lang.Integer complex;
+	private long complex;
 
-	public void setComplex(java.lang.Integer complex) {
+	public void setComplex(long complex) {
 		this.complex = complex;
 	}
 
-	public java.lang.Integer getComplex() {
+	public long getComplex() {
 		return complex;
 	}
 
