@@ -12,19 +12,19 @@ import com.staples.asgard.core.domain.model.price.Value;
 
 /**
  * @author srani
- *
+ * 
  */
 @JsonAutoDetect(getterVisibility = Visibility.PUBLIC_ONLY, setterVisibility = Visibility.PUBLIC_ONLY, fieldVisibility = Visibility.PUBLIC_ONLY)
 @JsonInclude(Include.NON_NULL)
 public class PriceOutputVO {
 
-	private Integer user_price_flag;
+	private int user_price_flag;
 
-	public void setUser_price_flag(Integer user_price_flag) {
+	public void setUser_price_flag(int user_price_flag) {
 		this.user_price_flag = user_price_flag;
 	}
 
-	public Integer getUser_price_flag() {
+	public int getUser_price_flag() {
 		return user_price_flag;
 	}
 

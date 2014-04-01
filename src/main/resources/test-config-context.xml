@@ -19,7 +19,8 @@
 		
 		<!-- Spring Integration core configuration -->
   
-  
+ <mvc:annotation-driven />
+ 
 <!-- Jackson-JSON configuration -->
 
 <bean id="jaxbAnnotationIntrospector" class="com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector" />

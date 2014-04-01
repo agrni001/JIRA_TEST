@@ -12,8 +12,8 @@ import java.math.BigDecimal;
 public class BuyMoreSaveMoreVO {
 
 	private BigDecimal price = null;
-	private Integer minQty = null;
-	private Integer maxQty = null;
+	private int minQty = 0;
+	private int maxQty = 0;
 
 	public BigDecimal getPrice() {
 		return price;
@@ -23,19 +23,19 @@ public class BuyMoreSaveMoreVO {
 		this.price = price.setScale(DEFAULT_SCALE, DEFAULT_RM);
 	}
 
-	public Integer getMinQty() {
+	public int getMinQty() {
 		return minQty;
 	}
 
-	public void setMinQty(Integer minQty) {
+	public void setMinQty(int minQty) {
 		this.minQty = minQty;
 	}
 
-	public Integer getMaxQty() {
+	public int getMaxQty() {
 		return maxQty;
 	}
 
-	public void setMaxQty(Integer maxQty) {
+	public void setMaxQty(int maxQty) {
 		this.maxQty = maxQty;
 	}
 

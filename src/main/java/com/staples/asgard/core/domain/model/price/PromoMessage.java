@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
  */
 @JsonAutoDetect(getterVisibility = Visibility.PUBLIC_ONLY, setterVisibility = Visibility.PUBLIC_ONLY, fieldVisibility = Visibility.PUBLIC_ONLY)
 @JsonInclude(Include.NON_NULL)
-public class Promomessage {
+public class PromoMessage {
 
-	public Promomessage(Integer typeid) {
+	public PromoMessage(Integer typeid) {
 		super();
 		this.typeid = typeid;
 	}
 
-	public Promomessage() {
+	public PromoMessage() {
 	}
 
 	private java.lang.String enddate;
@@ -71,27 +71,27 @@ public class Promomessage {
 		return name;
 	}
 
-	private java.lang.String promoValue;
+	private java.lang.String promopricevalue;
 
-	public void setPromoValue(java.lang.String promoValue) {
-		this.promoValue = promoValue;
+	public void setPromopricevalue(java.lang.String promopricevalue) {
+		this.promopricevalue = promopricevalue;
 	}
 
-	public java.lang.String getPromoValue() {
-		return promoValue;
+	public java.lang.String getPromopricevalue() {
+		return promopricevalue;
 	}
 
-	private java.lang.String promoType;
+	private java.lang.String promopricetype;
 
-	public void setPromoType(java.lang.String promoType) {
-		this.promoType = promoType;
+	public void setPromopricetype(java.lang.String promopricetype) {
+		this.promopricetype = promopricetype;
 	}
 
-	public java.lang.String getPromoType() {
-		return promoType;
+	public java.lang.String getPromopricetype() {
+		return promopricetype;
 	}
 
-	public boolean equals(Promomessage promotion) {
+	public boolean equals(PromoMessage promotion) {
 		boolean result;
 		if ((promotion == null) || (getClass() != promotion.getClass())) {
 			result = false;

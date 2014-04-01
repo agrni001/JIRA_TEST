@@ -22,13 +22,13 @@ public class Promotion {
 		return freeshipping;
 	}
 
-	private Promomessage[] promomessage;
+	private PromoMessage[] promomessage;
 
-	public void setPromomessage(Promomessage[] promomessage) {
+	public void setPromomessage(PromoMessage[] promomessage) {
 		this.promomessage = promomessage;
 	}
 
-	public Promomessage[] getPromomessage() {
+	public PromoMessage[] getPromomessage() {
 		return promomessage;
 	}
 
