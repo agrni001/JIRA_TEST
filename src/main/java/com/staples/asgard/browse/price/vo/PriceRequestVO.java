@@ -1,5 +1,7 @@
 package com.staples.asgard.browse.price.vo;
 
+import static com.staples.asgard.core.constants.PriceConstants.DEFAULT_ZONE;
+
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -9,8 +11,6 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-
-import static com.staples.asgard.core.constants.PriceConstants.DEFAULT_ZONE;
 
 /**
  * @author srani
@@ -31,7 +31,6 @@ public class PriceRequestVO implements Serializable {
 		try {
 			org.apache.commons.beanutils.BeanUtils.populate(this,
 					requestParaMultiValueMap);
-			System.out.println("this : " + this);
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
