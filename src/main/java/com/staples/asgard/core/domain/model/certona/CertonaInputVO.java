@@ -1,4 +1,4 @@
-package com.staples.asgard.core.domain.model.inventory;
+package com.staples.asgard.core.domain.model.certona;
 
 import java.lang.reflect.InvocationTargetException;
 
