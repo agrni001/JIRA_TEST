@@ -1,4 +1,4 @@
-package com.staples.asgard.browse.price.vo;
+package com.staples.asgard.core.price.vo;
 
 import static com.staples.asgard.core.constants.PriceConstants.DEFAULT_RM;
 import static com.staples.asgard.core.constants.PriceConstants.DEFAULT_SCALE;

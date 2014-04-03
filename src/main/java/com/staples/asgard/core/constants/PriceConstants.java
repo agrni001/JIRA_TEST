@@ -9,8 +9,6 @@ public class PriceConstants {
 	public static final String WAS_PRICE = "WASPRICE";
 	public static final String REG_PRICE = "REGPRICE";
 
-	public static final String DATE_FORMAT = "EEE MMM dd HH:mm:ss z yyyy";
-
 	// TODO move to property file.
 	public static final String DEFAULT_ZONE = "25";
 

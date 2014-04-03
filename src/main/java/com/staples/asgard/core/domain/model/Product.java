@@ -1,6 +1,6 @@
 package com.staples.asgard.core.domain.model;
 
-import com.staples.asgard.browse.price.vo.PriceOutputVO;
+import com.staples.asgard.core.price.vo.PriceOutputVO;
 
 
 public class Product {

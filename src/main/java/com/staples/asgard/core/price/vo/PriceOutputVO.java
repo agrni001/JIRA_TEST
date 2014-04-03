@@ -1,4 +1,4 @@
-package com.staples.asgard.browse.price.vo;
+package com.staples.asgard.core.price.vo;
 
 import java.util.ArrayList;
 

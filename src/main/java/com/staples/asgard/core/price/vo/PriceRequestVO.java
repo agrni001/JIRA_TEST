@@ -1,11 +1,10 @@
-package com.staples.asgard.browse.price.vo;
+package com.staples.asgard.core.price.vo;
 
 import static com.staples.asgard.core.constants.PriceConstants.DEFAULT_ZONE;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
-import java.util.Locale;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
@@ -43,7 +42,7 @@ public class PriceRequestVO implements Serializable {
 
 	private String tenant = null;
 	private String storeId = null;
-	private Locale locale = null;
+	private String locale = null;
 	private String geoZoneId = null;
 	private String topCustomerZoneId = null;
 	private String privateSavingId = null;
@@ -90,14 +89,14 @@ public class PriceRequestVO implements Serializable {
 	/**
 	 * @return
 	 */
-	public Locale getLocale() {
+	public String getLocale() {
 		return locale;
 	}
 
 	/**
 	 * @param locale
 	 */
-	public void setLocale(Locale locale) {
+	public void setLocale(String locale) {
 		this.locale = locale;
 	}
 
