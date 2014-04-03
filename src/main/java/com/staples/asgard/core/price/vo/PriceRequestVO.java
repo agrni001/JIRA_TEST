@@ -4,7 +4,8 @@ import static com.staples.asgard.core.constants.PriceConstants.DEFAULT_ZONE;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
-import java.util.List;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
@@ -40,17 +41,20 @@ public class PriceRequestVO implements Serializable {
 
 	}
 
+	@NotEmpty(message = "The tenant id field is mandatory.")
 	private String tenant = null;
+	@NotEmpty(message = "The store id field is mandatory.")
 	private String storeId = null;
+	@NotEmpty(message = "The locale field is mandatory.")
 	private String locale = null;
 	private String geoZoneId = null;
 	private String topCustomerZoneId = null;
 	private String privateSavingId = null;
 	private String defaultZoneId = DEFAULT_ZONE;
 
-	private List<String> skuListForPrice = null;
+	private String skuListForPrice = null;
 
-	private List<String> skuListForProduct = null;
+	private String skuListForProduct = null;
 
 	private int testDataType = -1;
 
@@ -142,21 +146,6 @@ public class PriceRequestVO implements Serializable {
 		this.privateSavingId = privateSavingId;
 	}
 
-	/*
-	 * List<SKURequestVO> skuList = null;
-	 *//**
-	 * @return
-	 */
-	/*
-	 * public List<SKURequestVO> getSkuList() { return skuList; }
-	 *//**
-	 * @param skuList
-	 */
-	/*
-	 * public void setSkuList(List<SKURequestVO> skuList) { this.skuList =
-	 * skuList; }
-	 */
-
 	public int getTestDataType() {
 		return testDataType;
 	}
@@ -173,20 +162,30 @@ public class PriceRequestVO implements Serializable {
 		this.defaultZoneId = defaultZoneId;
 	}
 
-	public List<String> getSkuListForPrice() {
+	public String getSkuListForPrice() {
 		return skuListForPrice;
 	}
 
-	public void setSkuListForPrice(List<String> skuListForPrice) {
+	public void setSkuListForPrice(String skuListForPrice) {
 		this.skuListForPrice = skuListForPrice;
 	}
 
-	public List<String> getSkuListForProduct() {
+	public String getSkuListForProduct() {
 		return skuListForProduct;
 	}
 
-	public void setSkuListForProduct(List<String> skuListForProduct) {
+	public void setSkuListForProduct(String skuListForProduct) {
 		this.skuListForProduct = skuListForProduct;
+	}
+
+	private String[] skuData = null;
+
+	public String[] getSkuData() {
+		return skuData;
+	}
+
+	public void setSkuData(String[] skuData) {
+		this.skuData = skuData;
 	}
 
 }
