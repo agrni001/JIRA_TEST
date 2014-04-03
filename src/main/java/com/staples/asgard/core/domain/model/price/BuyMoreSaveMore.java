@@ -1,4 +1,4 @@
-package com.staples.asgard.core.price.vo;
+package com.staples.asgard.core.domain.model.price;
 
 import static com.staples.asgard.core.constants.PriceConstants.DEFAULT_RM;
 import static com.staples.asgard.core.constants.PriceConstants.DEFAULT_SCALE;
@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  * @author srani
  * 
  */
-public class BuyMoreSaveMoreVO {
+public class BuyMoreSaveMore {
 
 	private BigDecimal price = null;
 	private int minQty = 0;

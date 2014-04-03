@@ -1,4 +1,4 @@
-package com.staples.asgard.core.price.vo;
+package com.staples.asgard.core.domain.model.price;
 
 import static com.staples.asgard.core.constants.PriceConstants.DEFAULT_RM;
 import static com.staples.asgard.core.constants.PriceConstants.DEFAULT_SCALE;
@@ -6,15 +6,11 @@ import static com.staples.asgard.core.constants.PriceConstants.DEFAULT_SCALE;
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.staples.asgard.core.domain.model.price.Autoaddpromotion;
-import com.staples.asgard.core.domain.model.price.PromoMessage;
-import com.staples.asgard.core.domain.model.price.Rebate;
-
 /**
  * @author srani
  * 
  */
-public class PriceResponseVO {
+public class PriceResponse {
 	private String id = null;
 
 	private BigDecimal listPrice = new BigDecimal(0).setScale(DEFAULT_SCALE,
@@ -30,7 +26,7 @@ public class PriceResponseVO {
 	private boolean displayWasPricing = false;
 	private boolean seePriceInCartOnly = false;
 
-	private List<BuyMoreSaveMoreVO> buyMoreSaveMoreDetail = null;
+	private List<BuyMoreSaveMore> buyMoreSaveMoreDetail = null;
 	private List<PromoMessage> promotion = null;
 	private Autoaddpromotion coupon = null;
 	private List<Rebate> rebate = null;
@@ -101,12 +97,12 @@ public class PriceResponseVO {
 		this.seePriceInCartOnly = seePriceInCartOnly;
 	}
 
-	public List<BuyMoreSaveMoreVO> getBuyMoreSaveMoreDetail() {
+	public List<BuyMoreSaveMore> getBuyMoreSaveMoreDetail() {
 		return buyMoreSaveMoreDetail;
 	}
 
 	public void setBuyMoreSaveMoreDetail(
-			List<BuyMoreSaveMoreVO> buyMoreSaveMoreDetail) {
+			List<BuyMoreSaveMore> buyMoreSaveMoreDetail) {
 		this.buyMoreSaveMoreDetail = buyMoreSaveMoreDetail;
 	}
 

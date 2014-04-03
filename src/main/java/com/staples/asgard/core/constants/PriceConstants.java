@@ -9,7 +9,7 @@ public class PriceConstants {
 	public static final String WAS_PRICE = "WASPRICE";
 	public static final String REG_PRICE = "REGPRICE";
 
-	// TODO move to property file.
+	// TODO pick from the MONGO.
 	public static final String DEFAULT_ZONE = "25";
 
 	public static final int DEFAULT_SCALE = 2;

@@ -1,4 +1,4 @@
-package com.staples.asgard.core.price.vo;
+package com.staples.asgard.core.domain.model.price;
 
 import static com.staples.asgard.core.constants.PriceConstants.DEFAULT_ZONE;
 
@@ -18,14 +18,14 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
  */
 @JsonAutoDetect(getterVisibility = Visibility.PUBLIC_ONLY, setterVisibility = Visibility.PUBLIC_ONLY, fieldVisibility = Visibility.PUBLIC_ONLY)
 @JsonInclude(Include.NON_NULL)
-public class PriceRequestVO implements Serializable {
+public class PriceRequest implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4592538709068555459L;
 
-	public PriceRequestVO(
+	public PriceRequest(
 			org.springframework.util.LinkedMultiValueMap requestParaMultiValueMap) {
 		super();
 		try {
@@ -50,6 +50,7 @@ public class PriceRequestVO implements Serializable {
 	private String geoZoneId = null;
 	private String topCustomerZoneId = null;
 	private String privateSavingId = null;
+	//TODO pick from the MONGO
 	private String defaultZoneId = DEFAULT_ZONE;
 
 	private String skuListForPrice = null;
@@ -58,7 +59,7 @@ public class PriceRequestVO implements Serializable {
 
 	private int testDataType = -1;
 
-	public PriceRequestVO() {
+	public PriceRequest() {
 		super();
 	}
 

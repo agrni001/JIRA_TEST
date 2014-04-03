@@ -1,4 +1,4 @@
-package com.staples.asgard.core.price.vo;
+package com.staples.asgard.core.domain.model.price;
 
 import java.util.ArrayList;
 
@@ -6,9 +6,6 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.staples.asgard.core.domain.model.price.Promotion;
-import com.staples.asgard.core.domain.model.price.Rebate;
-import com.staples.asgard.core.domain.model.price.Value;
 
 /**
  * @author srani
@@ -16,7 +13,7 @@ import com.staples.asgard.core.domain.model.price.Value;
  */
 @JsonAutoDetect(getterVisibility = Visibility.PUBLIC_ONLY, setterVisibility = Visibility.PUBLIC_ONLY, fieldVisibility = Visibility.PUBLIC_ONLY)
 @JsonInclude(Include.NON_NULL)
-public class PriceOutputVO {
+public class PriceOutput {
 
 	private int user_price_flag;
 

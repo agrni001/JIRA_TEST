@@ -1,16 +1,16 @@
 package com.staples.asgard.core.domain.model;
 
-import com.staples.asgard.core.price.vo.PriceOutputVO;
+import com.staples.asgard.core.domain.model.price.PriceOutput;
 
 
 public class Product {
-	PriceOutputVO price = null;
+	PriceOutput price = null;
 
-	public PriceOutputVO getPrice() {
+	public PriceOutput getPrice() {
 		return price;
 	}
 
-	public void setPrice(PriceOutputVO price) {
+	public void setPrice(PriceOutput price) {
 		this.price = price;
 	}
 
