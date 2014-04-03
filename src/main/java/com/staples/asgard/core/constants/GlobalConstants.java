@@ -6,7 +6,7 @@ package com.staples.asgard.core.constants;
  * 
  */
 public final class GlobalConstants {
- 
+
 	/** ServerID parameter for Config Loader **/
 	public static final String CURRENT_SERVER_ID = "ServerID";
 
@@ -19,7 +19,7 @@ public final class GlobalConstants {
 	/** Test the data before updating the DataBase **/
 	public static final String INVALID_FIELD = "Please enter valid data";
 	public static final String IS_INITIALIZED = "isInitialized";
- 
+
 	/** Response Parameters **/
 	public static final String APPLICATION_JSON = "application/json";
 	public static final String CONTENT_TYPE = "Content-Type";
@@ -47,6 +47,6 @@ public final class GlobalConstants {
 	public static final String L = "L";
 	public static final String YYYYMMDD = "yyyyMMdd";
 
- 
+	public static final String DATE_FORMAT = "EEE MMM dd HH:mm:ss z yyyy";
 
 }
