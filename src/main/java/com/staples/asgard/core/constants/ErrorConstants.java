@@ -30,4 +30,29 @@ public class ErrorConstants {
 	public static final AsgardError ERROR_BS0205 = new AsgardError("BS0205", "Json Generation Exception");
 	public static final AsgardError ERROR_BS0206 = new AsgardError("BS0206", "IO Exception");
 	
+	/*
+	 * Error Code Guidelines
+	 * errorCode : “BSIGBR001”, “COBLSI223”, etc.
+	 * BS – Browse Service / CO – Checkout Service
+ 	 * IG – Integration Gateway /  BL – Business Layer
+ 	 * BR – BloomReach or / SI – Store Inventory / MS – Math Story / .. 
+ 	 * 001 – Range 000-999 (Range can be broken down into different layers further, if needed in future.  )
+	 *  
+	 */
+	
+	/** 
+	 * Browse Error Codes 
+	 */
+	
+	//BS-Browse Service, BL-Business Layer, CT-Certona 
+	public static final AsgardError ERROR_BSBLCT001 = new AsgardError("BSBLCT001", "Error in Certona reponse in Business Layer");
+	public static final AsgardError ERROR_BSBLCT002 = new AsgardError("BSBLCT001", "Error in Certona outbound gateway in Business Layer");
+	
+	/** 
+	 * IG - Integration Gateway Error Codes 
+	 */
+	
+	//BS-Browse Service, IG-Integration Gateway Layer, CT-Certona  		
+	public static final AsgardError ERROR_BSIGCT001 = new AsgardError("BSIGCT001", "Error in Certona reponse in Integration Layer");
+	
 }
