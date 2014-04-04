@@ -13,9 +13,9 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 public class SKUOnlineInventoryVO {
 
- 	private String sku;
+	private String sku;
 
- 	private Integer availableQuantity;
+	private Integer availableQuantity;
 	private Integer minLeadTime;
 	private Integer maxLeadTime;
 
@@ -58,9 +58,10 @@ public class SKUOnlineInventoryVO {
 	 * @param maxDeliveryTime
 	 * @param requestedQuantity
 	 */
-	public SKUOnlineInventoryVO(String sku, Integer availableQuantity, Integer minLeadTime, Integer maxLeadTime,
-			Date minDeliveryDate, Date maxDeliveryDate, Integer minDeliveryTime, Integer maxDeliveryTime,
-			Integer requestedQuantity) {
+	public SKUOnlineInventoryVO(String sku, Integer availableQuantity,
+			Integer minLeadTime, Integer maxLeadTime, Date minDeliveryDate,
+			Date maxDeliveryDate, Integer minDeliveryTime,
+			Integer maxDeliveryTime, Integer requestedQuantity) {
 		super();
 		this.sku = sku;
 		this.availableQuantity = availableQuantity;
@@ -144,5 +145,4 @@ public class SKUOnlineInventoryVO {
 	public void setRequestedQuantity(Integer requestedQuantity) {
 		this.requestedQuantity = requestedQuantity;
 	}
-
 }
