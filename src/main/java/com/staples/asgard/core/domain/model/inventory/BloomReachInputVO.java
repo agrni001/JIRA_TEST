@@ -19,7 +19,9 @@ public class BloomReachInputVO {
 	private String prodId;
 	private String prodName;
 	private String status;
+	private String searchTerm;
 
+	
 	
 	@SuppressWarnings("unchecked")
 	public  BloomReachInputVO(org.springframework.util.LinkedMultiValueMap requestParaMultiValueMap) {
@@ -37,7 +39,7 @@ public class BloomReachInputVO {
 
 	public BloomReachInputVO(String acctId, String url, String acctAuth,
 			String userAgent, String pType, String prodId, String prodName,
-			String status) {
+			String status, String searchTerm) {
 		super();
 		this.acctId = acctId;
 		this.url = url;
@@ -47,6 +49,7 @@ public class BloomReachInputVO {
 		this.prodId = prodId;
 		this.prodName = prodName;
 		this.status = status;
+		this.searchTerm = searchTerm;
 	}
 
 	public BloomReachInputVO() {
@@ -124,5 +127,16 @@ public class BloomReachInputVO {
 	public void setRef(String ref) {
 		this.ref = ref;
 	}
+
+
+	public String getSearchTerm() {
+		return searchTerm;
+	}
+
+
+	public void setSearchTerm(String searchTerm) {
+		this.searchTerm = searchTerm;
+	}
 	   
+	
 }
