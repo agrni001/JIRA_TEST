@@ -1,5 +1,7 @@
 package com.staples.asgard.core.domain.model.price;
 
+import java.math.BigDecimal;
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -7,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 /**
  * @author srani
- *
+ * 
  */
 @JsonAutoDetect(getterVisibility = Visibility.PUBLIC_ONLY, setterVisibility = Visibility.PUBLIC_ONLY, fieldVisibility = Visibility.PUBLIC_ONLY)
 @JsonInclude(Include.NON_NULL)
@@ -32,13 +34,13 @@ public class Offers {
 		return qtylimit;
 	}
 
-	private java.lang.String compareprice;
+	private BigDecimal compareprice;
 
-	public void setCompareprice(java.lang.String compareprice) {
+	public void setCompareprice(BigDecimal compareprice) {
 		this.compareprice = compareprice;
 	}
 
-	public java.lang.String getCompareprice() {
+	public BigDecimal getCompareprice() {
 		return compareprice;
 	}
 
@@ -72,13 +74,13 @@ public class Offers {
 		return offer_id;
 	}
 
-	private String price;
+	private BigDecimal price;
 
-	public void setPrice(String price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
-	public String getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
