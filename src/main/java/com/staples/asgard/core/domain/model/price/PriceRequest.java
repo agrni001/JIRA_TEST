@@ -49,8 +49,7 @@ public class PriceRequest implements Serializable {
 	private String locale = null;
 	private String geoZoneId = null;
 	private String topCustomerZoneId = null;
-	private String privateSavingId = null;
-	//TODO pick from the MONGO
+	// TODO pick from the MONGO
 	private String defaultZoneId = DEFAULT_ZONE;
 
 	private String skuListForPrice = null;
@@ -136,57 +135,57 @@ public class PriceRequest implements Serializable {
 	/**
 	 * @return
 	 */
-	public String getPrivateSavingId() {
-		return privateSavingId;
-	}
-
-	/**
-	 * @param privateSavingId
-	 */
-	public void setPrivateSavingId(String privateSavingId) {
-		this.privateSavingId = privateSavingId;
-	}
-
 	public int getTestDataType() {
 		return testDataType;
 	}
 
+	/**
+	 * @param type
+	 */
 	public void setTestDataType(int type) {
 		this.testDataType = type;
 	}
 
+	/**
+	 * @return
+	 */
 	public String getDefaultZoneId() {
 		return defaultZoneId;
 	}
 
+	/**
+	 * @param defaultZoneId
+	 */
 	public void setDefaultZoneId(String defaultZoneId) {
 		this.defaultZoneId = defaultZoneId;
 	}
 
+	/**
+	 * @return
+	 */
 	public String getSkuListForPrice() {
 		return skuListForPrice;
 	}
 
+	/**
+	 * @param skuListForPrice
+	 */
 	public void setSkuListForPrice(String skuListForPrice) {
 		this.skuListForPrice = skuListForPrice;
 	}
 
+	/**
+	 * @return
+	 */
 	public String getSkuListForProduct() {
 		return skuListForProduct;
 	}
 
+	/**
+	 * @param skuListForProduct
+	 */
 	public void setSkuListForProduct(String skuListForProduct) {
 		this.skuListForProduct = skuListForProduct;
-	}
-
-	private String[] skuData = null;
-
-	public String[] getSkuData() {
-		return skuData;
-	}
-
-	public void setSkuData(String[] skuData) {
-		this.skuData = skuData;
 	}
 
 }
