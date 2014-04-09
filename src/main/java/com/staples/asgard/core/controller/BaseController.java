@@ -108,7 +108,6 @@ public abstract class BaseController {
 		/** Creating the RestError object **/
 		RestError restError = new RestError();
 		restError.addErrors(errorCode, errorMessage);
-		restError.setStatus("ERROR");
 
 		/** Converting the RestError object to JSON Format string **/
 		ObjectMapper mapper = new ObjectMapper();

@@ -11,7 +11,6 @@ import java.util.List;
 public class RestError {
 	
 	private List<ErrorMap> errors;
-	private String status;
 	
 	public RestError(){
 		errors = new ArrayList<ErrorMap>();
@@ -41,13 +40,5 @@ public class RestError {
 	 */
 	public void addErrors(ErrorMap errorMap) {
 		errors.add(errorMap);
-	}
-	
-	public String getStatus() {
-		return status;
-	}
-	
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	}	
 }
