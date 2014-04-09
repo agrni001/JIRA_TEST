@@ -51,7 +51,7 @@ public class ConfigLoader implements BeanPostProcessor {
 	private ConfigService configService;
 
 	@Override
-	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
 		return bean;
 	}
 	
@@ -93,7 +93,7 @@ public class ConfigLoader implements BeanPostProcessor {
 	 *
      */ 
 	@Override
-	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 		
 		/**
 		 * 1. When first time this method is invoked handle First Time Load Scenario and set flag isFirstTimeLoadHandled = true
