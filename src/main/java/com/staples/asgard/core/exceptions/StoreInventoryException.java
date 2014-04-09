@@ -6,6 +6,7 @@ package com.staples.asgard.core.exceptions;
 import org.springframework.integration.Message;
 import org.springframework.integration.MessageHandlingException;
 import org.springframework.integration.MessagingException;
+import org.springframework.integration.support.MessageBuilder;
 
 /**
  * @author ubud
@@ -23,7 +24,7 @@ public class StoreInventoryException extends MessageHandlingException  {
 	 * 
 	 */
 	public StoreInventoryException() {
-		super((Message<?>) new MessagingException("error"));
+		super(MessageBuilder.withPayload("error").build());
 		// TODO Auto-generated constructor stub
 	}
 
@@ -32,7 +33,7 @@ public class StoreInventoryException extends MessageHandlingException  {
 	 * @param cause
 	 */
 	public StoreInventoryException(String message, Throwable cause) {
-		super((Message<?>) new MessagingException(message) , cause);
+		super(MessageBuilder.withPayload(message).build() , cause);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -40,7 +41,7 @@ public class StoreInventoryException extends MessageHandlingException  {
 	 * @param message
 	 */
 	public StoreInventoryException(String message) {
-		super((Message<?>) new MessagingException(message));
+		super(MessageBuilder.withPayload(message).build());
 		// TODO Auto-generated constructor stub
 	}
 
@@ -48,13 +49,13 @@ public class StoreInventoryException extends MessageHandlingException  {
 	 * @param cause
 	 */
 	public StoreInventoryException(Throwable cause) {
-		super((Message<?>) new MessagingException(cause.getMessage()));
+		super(MessageBuilder.withPayload(cause.getMessage()).build());
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String toString() {
-		return "StoreInventoryException [getMessage()=" + getMessage() + "]";
+		return "StoreInventoryException [getMessage()=" + getFailedMessage().getPayload() + "]";
 	}
 
 	

@@ -32,9 +32,8 @@ public class ErrorConstants {
 	
 	/*
 	 * Error Code Guidelines
-	 * errorCode : “BSIGBR001”, “COBLSI223”, etc.
+	 * errorCode : “BSBR001”, “COSI223”, etc.
 	 * BS – Browse Service / CO – Checkout Service
- 	 * IG – Integration Gateway /  BL – Business Layer
  	 * BR – BloomReach or / SI – Store Inventory / MS – Math Story / .. 
  	 * 001 – Range 000-999 (Range can be broken down into different layers further, if needed in future.  )
 	 *  
@@ -44,15 +43,18 @@ public class ErrorConstants {
 	 * Browse Error Codes 
 	 */
 	
-	//BS-Browse Service, BL-Business Layer, CT-Certona 
-	public static final AsgardError ERROR_BSBLCT001 = new AsgardError("BSBLCT001", "Error in Certona reponse in Business Layer");
-	public static final AsgardError ERROR_BSBLCT002 = new AsgardError("BSBLCT001", "Error in Certona outbound gateway in Business Layer");
+	//Certona 
+	public static final AsgardError ERROR_BSCT001 = new AsgardError("BSCT001", "Error in Certona reponse");
+	public static final AsgardError ERROR_BSCT002 = new AsgardError("BSCT002", "Error in Certona reponse - handleResponse");	
+	public static final AsgardError ERROR_BSCT003 = new AsgardError("BSCT003", "Error in Certona outbound gateway");
 	
-	/** 
-	 * IG - Integration Gateway Error Codes 
-	 */
+	//BloomReach 
+	public static final AsgardError ERROR_BSBR001 = new AsgardError("BSBR001", "Error in BloomReach response");
+	public static final AsgardError ERROR_BSBR002 = new AsgardError("BSBR002", "Error in BloomReach reponse - handleResponse");	
 	
-	//BS-Browse Service, IG-Integration Gateway Layer, CT-Certona  		
-	public static final AsgardError ERROR_BSIGCT001 = new AsgardError("BSIGCT001", "Error in Certona reponse in Integration Layer");
+	//Store Inventory Errors 
+	public static final AsgardError ERROR_BSSI001 = new AsgardError("BSSI001", "Error in Store Inventory response");
+	public static final AsgardError ERROR_BSSI002 = new AsgardError("BSSI002", "Store Inventory Integration is InActive");
+	public static final AsgardError ERROR_BSSI003 = new AsgardError("BSSI003", "Error in Store Inventory response");	
 	
 }
