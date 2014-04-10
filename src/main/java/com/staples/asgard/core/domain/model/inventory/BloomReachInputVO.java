@@ -10,9 +10,7 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class BloomReachInputVO {
 
-	private String acctId; 
 	private String url;
-	private String acctAuth;
 	private String userAgent;
 	private String ref;
 	private String pType;
@@ -41,9 +39,7 @@ public class BloomReachInputVO {
 			String userAgent, String pType, String prodId, String prodName,
 			String status, String searchTerm) {
 		super();
-		this.acctId = acctId;
 		this.url = url;
-		this.acctAuth = acctAuth;
 		this.userAgent = userAgent;
 		this.pType = pType;
 		this.prodId = prodId;
@@ -56,28 +52,12 @@ public class BloomReachInputVO {
 			super();
 	}
 
-	public String getAcctId() {
-		return acctId;
-	}
-
-	public void setAcctId(String acctId) {
-		this.acctId = acctId;
-	}
-
 	public String getUrl() {
 		return url;
 	}
 
 	public void setUrl(String url) {
 		this.url = url;
-	}
-
-	public String getAcctAuth() {
-		return acctAuth;
-	}
-
-	public void setAcctAuth(String acctAuth) {
-		this.acctAuth = acctAuth;
 	}
 
 	public String getUserAgent() {
