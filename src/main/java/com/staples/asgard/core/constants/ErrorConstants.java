@@ -57,4 +57,13 @@ public class ErrorConstants {
 	public static final AsgardError ERROR_BSSI002 = new AsgardError("BSSI002", "Store Inventory Integration is InActive");
 	public static final AsgardError ERROR_BSSI003 = new AsgardError("BSSI003", "Error in Store Inventory response");	
 	
+	//Online Inventory  Errors 
+	public static final AsgardError ERROR_BSOI001 = new AsgardError("BSOI001", "Error in Online Inventory response");
+	public static final AsgardError ERROR_BSOI002 = new AsgardError("BSOI002", "Online Inventory Integration is InActive");
+	public static final AsgardError ERROR_BSOI003 = new AsgardError("BSOI003", "Error in Online Inventory response");	
+	
+	// For Price
+	public static final AsgardError ERROR_BSPR001 = new AsgardError("BSBLPR001", "Error in Price reponse in Business Layer");
+	public static final AsgardError ERROR_BSPR002 = new AsgardError("BSBLPR002", "Error in Price outbound gateway in Business Layer");
+	
 }

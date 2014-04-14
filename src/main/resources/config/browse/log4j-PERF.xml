@@ -74,7 +74,7 @@
 		**************************************************************				 
 	-->
 	<logger name="com.staples" additivity="false">
-		<level value="INFO" />
+		<level value="DEBUG" />
 		<appender-ref ref="DEBUG" />
 		<appender-ref ref="EXCEPTION" />
 		<appender-ref ref="CONSOLE" />
@@ -95,7 +95,7 @@
 	-->
 	
 	<root>
-		<priority value="INFO" />
+		<priority value="DEBUG" />
 		<appender-ref ref="DEBUG" />
 		<appender-ref ref="SYSTEM" />
 		<appender-ref ref="EXCEPTION" />

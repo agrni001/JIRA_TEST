@@ -19,6 +19,8 @@ public class PriceResponse {
 			DEFAULT_RM);
 	private BigDecimal savings = new BigDecimal(0).setScale(DEFAULT_SCALE,
 			DEFAULT_RM);
+	private BigDecimal priceAfterSavings = new BigDecimal(0).setScale(
+			DEFAULT_SCALE, DEFAULT_RM);
 	private BigDecimal totalSavings = new BigDecimal(0).setScale(DEFAULT_SCALE,
 			DEFAULT_RM);
 
@@ -63,6 +65,14 @@ public class PriceResponse {
 
 	public void setSavings(BigDecimal savings) {
 		this.savings = savings.setScale(DEFAULT_SCALE, DEFAULT_RM);
+	}
+
+	public BigDecimal getPriceAfterSavings() {
+		return priceAfterSavings;
+	}
+
+	public void setPriceAfterSavings(BigDecimal priceAfterSavings) {
+		this.priceAfterSavings = priceAfterSavings;
 	}
 
 	public BigDecimal getTotalSavings() {
