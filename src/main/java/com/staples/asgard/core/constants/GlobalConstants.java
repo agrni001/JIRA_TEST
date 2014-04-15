@@ -42,6 +42,8 @@ public final class GlobalConstants {
 	public static final String SINGLE_SPACE = " ";
 	public static final String ZERO = "0";
 	public static final String PIPE_SYMBOL = "|";
+	public static final String SLASH_SYMBOL = "/";
+	public static final String HYPHEN_SYMBOL = "-";
 
 	public static final String R = "R";
 	public static final String L = "L";

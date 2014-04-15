@@ -75,20 +75,25 @@ public class PriceConstants {
 
 	public static final String MIN_OFFER_PRICE = "minOfferPrice";
 
-	// "$price.values" - change post 841
-	public static final String PIVOT_PRICE_VALUES = "$values";
+	// "$price.values" - change post 841 - "$values"
+	public static final String PIVOT_PRICE_VALUES = "$price.values";
 
 	// "price.values.zone.id" - change post 841
-	public static final String PIVOT_PRICE_VALUES_ID = "values.zone.id";
+	public static final String PIVOT_PRICE_VALUES_ID = "price.values.zone.id";
 
 	// "$price.values.precedence" - change post 841
-	public static final String PIVOT_PRICE_VALUES_PRECEDENCE = "$values.precedence";
+	public static final String PIVOT_PRICE_VALUES_PRECEDENCE = "$price.values.precedence";
 
 	// "$price.values.zone" - change post 841
-	public static final String PIVOT_PRICE_VALUES_ZONE = "$values.zone";
+	public static final String PIVOT_PRICE_VALUES_ZONE = "$price.values.zone";
 
 	// "$price.values.offer" - change post 841
-	public static final String PIVOT_PRICE_VALUES_OFFER = "$values.offer";
+	public static final String PIVOT_PRICE_VALUES_OFFER = "$price.values.offer";
+
+	public static final String PIVOT_PRICE_UOM = "$price.uom";
+	public static final String PIVOT_PRICE_CURRENCY = "$price.currency";
+	public static final String PIVOT_PRICE_PROMOTIONS = "$price.promotions";
+	public static final String PIVOT_PRICE_REBATES = "$price.rebates";
 
 	// "price.uom" - change post 841
 	public static final String PRICE_UOM = "uom";
