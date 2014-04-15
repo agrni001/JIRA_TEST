@@ -56,6 +56,8 @@ public class PriceRequest implements Serializable {
 
 	private String skuListForProduct = null;
 
+	private String errors = null;
+
 	private int testDataType = -1;
 
 	public PriceRequest() {
@@ -186,6 +188,14 @@ public class PriceRequest implements Serializable {
 	 */
 	public void setSkuListForProduct(String skuListForProduct) {
 		this.skuListForProduct = skuListForProduct;
+	}
+
+	public String getErrors() {
+		return errors;
+	}
+
+	public void setErrors(String errors) {
+		this.errors = errors;
 	}
 
 }
