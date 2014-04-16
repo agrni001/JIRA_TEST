@@ -30,7 +30,7 @@ import com.staples.asgard.core.constants.GlobalConstants;
  * Date: Jan 16, 2014
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:config-context.xml"})
+@ContextConfiguration(locations = {"classpath*:config-context.xml"})
 public class ConfigServiceImplTest {	
 	@InjectMocks
 	@Autowired
