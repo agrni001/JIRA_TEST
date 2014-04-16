@@ -82,5 +82,7 @@ public class PriceOutput {
 	public void set_id(ID _id) {
 		this._id = _id;
 	}
+	
+
 
 }

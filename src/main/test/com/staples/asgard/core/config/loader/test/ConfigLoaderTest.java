@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -35,6 +36,7 @@ public class ConfigLoaderTest {
 	@Mock
 	private ConfigUtil configUtil;
 
+	@Ignore
 	@Test
 	public void testPostProcessAfterInitialization() {
 		//TODO: tests the core Functionality using a bean that is available in core module
@@ -80,6 +82,7 @@ public class ConfigLoaderTest {
 		//assertEquals("No Bean Returned :", "1", bean.getTimeout());
 	}
 
+	@Ignore
 	@Test(expected = RuntimeException.class)
 	public void testPostProcessWithNoDefaultConfigBeans() {
 		String beanName = "IVConfig";
