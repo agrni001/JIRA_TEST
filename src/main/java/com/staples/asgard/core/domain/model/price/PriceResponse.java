@@ -26,7 +26,6 @@ public class PriceResponse {
 
 	private boolean displayRegPricing = false;
 	private boolean displayWasPricing = false;
-	private boolean seePriceInCartOnly = false;
 
 	private Offers[] buyMoreSaveMoreDetail = null;
 	private List<PromoMessage> promotion = null;
@@ -97,14 +96,6 @@ public class PriceResponse {
 
 	public void setDisplayWasPricing(boolean displayWasPricing) {
 		this.displayWasPricing = displayWasPricing;
-	}
-
-	public boolean isSeePriceInCartOnly() {
-		return seePriceInCartOnly;
-	}
-
-	public void setSeePriceInCartOnly(boolean seePriceInCartOnly) {
-		this.seePriceInCartOnly = seePriceInCartOnly;
 	}
 
 	public Offers[] getBuyMoreSaveMoreDetail() {
