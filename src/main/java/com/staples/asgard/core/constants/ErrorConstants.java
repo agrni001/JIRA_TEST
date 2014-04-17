@@ -47,6 +47,7 @@ public class ErrorConstants {
 	public static final AsgardError ERROR_BSCT001 = new AsgardError("BSCT001", "Error in Certona reponse");
 	public static final AsgardError ERROR_BSCT002 = new AsgardError("BSCT002", "Error in Certona reponse - handleResponse");	
 	public static final AsgardError ERROR_BSCT003 = new AsgardError("BSCT003", "Error in Certona outbound gateway");
+	public static final AsgardError ERROR_BSCT004 = new AsgardError("BSCT004", "Certona Input Parameter Validation failed");
 	
 	//BloomReach 
 	public static final AsgardError ERROR_BSBR001 = new AsgardError("BSBR001", "Error in BloomReach response");
