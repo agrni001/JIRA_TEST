@@ -40,6 +40,7 @@ public class CertonaInputVO {
 	@NotEmpty(message = "The appId field is mandatory.")
 	private String appId;
 
+	private String errors;
 	
 	@SuppressWarnings("unchecked")
 	public  CertonaInputVO(org.springframework.util.LinkedMultiValueMap requestParaMultiValueMap) {
@@ -199,6 +200,13 @@ public class CertonaInputVO {
 		this.appId = appId;
 	}
 
+	public String getErrors() {
+		return errors;
+	}
 
+	public void setErrors(String errors) {
+		this.errors = errors;
+	}
+	
 
 }
