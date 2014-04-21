@@ -18,6 +18,7 @@ public class BloomReachInputVO {
 	private String prodName;
 	private String status;
 	private String searchTerm;
+	private String errors;
 
 	
 	
@@ -116,6 +117,14 @@ public class BloomReachInputVO {
 
 	public void setSearchTerm(String searchTerm) {
 		this.searchTerm = searchTerm;
+	}
+
+	public String getErrors() {
+		return errors;
+	}
+
+	public void setErrors(String errors) {
+		this.errors = errors;
 	}
 	   
 	

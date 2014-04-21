@@ -32,6 +32,8 @@ public class OnlineInventoryInputVO {
 	@NotNull(message = "The quantity list is mandatory.")	 
 	private String qtyList;
 	
+	private String errors;
+	
 	@SuppressWarnings("unchecked")
 	public  OnlineInventoryInputVO(org.springframework.util.LinkedMultiValueMap requestParaMultiValueMap) {
 		super();
@@ -103,5 +105,14 @@ public class OnlineInventoryInputVO {
 	public void setQtyList(String qtyList) {
 		this.qtyList = qtyList;
 	}
-	   
+	
+	public String getErrors() {
+		return errors;
+	}
+
+	public void setErrors(String errors) {
+		this.errors = errors;
+	}
+
+	//TODO Remove validation annotations @NotEmpty etc from member variables if AOP based solution is not found 
 }
