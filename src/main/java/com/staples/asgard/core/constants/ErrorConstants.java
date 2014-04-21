@@ -47,23 +47,30 @@ public class ErrorConstants {
 	public static final AsgardError ERROR_BSCT001 = new AsgardError("BSCT001", "Error in Certona reponse");
 	public static final AsgardError ERROR_BSCT002 = new AsgardError("BSCT002", "Error in Certona reponse - handleResponse");	
 	public static final AsgardError ERROR_BSCT003 = new AsgardError("BSCT003", "Error in Certona outbound gateway");
+	public static final AsgardError ERROR_BSCT004 = new AsgardError("BSCT004", "Certona Input Parameter Validation failed");
 	
 	//BloomReach 
 	public static final AsgardError ERROR_BSBR001 = new AsgardError("BSBR001", "Error in BloomReach response");
 	public static final AsgardError ERROR_BSBR002 = new AsgardError("BSBR002", "Error in BloomReach reponse - handleResponse");	
+	public static final AsgardError ERROR_BSBR004 = new AsgardError("BSBR004", "BloomReach Input Parameter Validation failed");
 	
 	//Store Inventory Errors 
 	public static final AsgardError ERROR_BSSI001 = new AsgardError("BSSI001", "Error in Store Inventory response");
 	public static final AsgardError ERROR_BSSI002 = new AsgardError("BSSI002", "Store Inventory Integration is InActive");
-	public static final AsgardError ERROR_BSSI003 = new AsgardError("BSSI003", "Error in Store Inventory response");	
-	
+	public static final AsgardError ERROR_BSSI003 = new AsgardError("BSSI003", "Error in Store Inventory response");
+	public static final AsgardError ERROR_BSSI004 = new AsgardError("BSSI004", "Store Inventory Input Parameter Validation failed");
+		
+		
 	//Online Inventory  Errors 
 	public static final AsgardError ERROR_BSOI001 = new AsgardError("BSOI001", "Error in Online Inventory response");
 	public static final AsgardError ERROR_BSOI002 = new AsgardError("BSOI002", "Online Inventory Integration is InActive");
-	public static final AsgardError ERROR_BSOI003 = new AsgardError("BSOI003", "Error in Online Inventory response");	
+	public static final AsgardError ERROR_BSOI003 = new AsgardError("BSOI003", "Error in Online Inventory response");
+	public static final AsgardError ERROR_BSOI004 = new AsgardError("BSOI004", "Online Inventory Input Parameter Validation failed");	
 	
 	// For Price
 	public static final AsgardError ERROR_BSPR001 = new AsgardError("BSBLPR001", "Error in Price reponse in Business Layer");
 	public static final AsgardError ERROR_BSPR002 = new AsgardError("BSBLPR002", "Error in Price outbound gateway in Business Layer");
+	public static final AsgardError ERROR_BSPR004 = new AsgardError("BSBLPR004", "Price Input Parameter Validation failed");
+		
 	
 }

@@ -39,5 +39,34 @@ public class ErrorUtil {
 		return outputErrorJSON;
 	}
 	
+	/**
+	 * Creates and Converts the AsgardError object to JSON string. 
+	 * It is also a common point where errors are logged. 
+	 * It is meant for creating Input Bean validation error only
+	 * 
+	 * @param restError
+	 * @return output JSON in String format
+	 */
+	public static String createInputInvalidJson(AsgardError asgardError, String errorMessage) {
+		
+		//Log the error 
+		LOG.error("Error Code = {} : Error Message = {}", asgardError.getCode(), errorMessage);
+		
+		String outputErrorJSON = null;		
+				
+		/** Creating the RestError object **/
+		RestError restError = new RestError();
+		restError.addErrors(asgardError.getCode(), errorMessage);
+
+		/** Converting the RestError object to JSON Format string **/
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			outputErrorJSON = mapper.writeValueAsString(restError);
+		} catch (Exception JSONException) {
+			LOG.error("Error in converting restError into json");
+		}
+		return outputErrorJSON;
+	}
+	
 
 }

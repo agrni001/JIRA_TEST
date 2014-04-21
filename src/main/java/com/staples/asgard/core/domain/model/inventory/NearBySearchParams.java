@@ -8,9 +8,11 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.annotation.Transient;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
@@ -106,6 +108,9 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
     protected String searchLocale;
     protected String latitude;
     protected String longitude;
+    
+    @XmlTransient
+    protected String errors;
 
     public NearBySearchParams() {
     	super();
@@ -350,5 +355,13 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
     public void setLongitude(String value) {
         this.longitude = value;
     }
+    
+	public String getErrors() {
+		return errors;
+	}
+
+	public void setErrors(String errors) {
+		this.errors = errors;
+	}
 
 }
