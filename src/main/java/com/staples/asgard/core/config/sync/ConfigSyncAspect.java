@@ -94,20 +94,17 @@ public class ConfigSyncAspect {
             // getBeanId() method
             Object beanId = MethodUtils.invokeExactMethod(proxyObject, "getBeanId", new Object[] {});
 
-            if (log.isDebugEnabled()) {
-                log.debug("sync(fieldName, fieldValue, serverId, beanId) " + fieldName + "; " + fieldValue + "; "
-                        + currentServerId + "; " + beanId);
-            }
+            log.debug("sync(fieldName={}, fieldValue={}, serverId={}, beanId={}) ", fieldName, fieldValue,
+                    currentServerId, beanId);
 
             // TODO this method needs to be updated to pass in the user
-            // performing
-            // the update
+            // performing the update
             bSuccess = configService.updateBeanConfiguration(currentServerId, String.valueOf(beanId), fieldName,
                     String.valueOf(fieldValue));
 
             if (!bSuccess) {
-                log.error("Sync failed, bean not found! sync(fieldName, fieldValue, serverId, beanId) " + fieldName
-                        + "; " + fieldValue + "; " + currentServerId + "; " + beanId);
+                log.error("Sync failed, bean not found! sync(fieldName={}, fieldValue={}, serverId={}, beanId={}) ",
+                        fieldName, fieldValue, currentServerId, beanId);
             }
 
         } catch (NoSuchMethodException e) {
@@ -119,7 +116,7 @@ public class ConfigSyncAspect {
         }
 
         if (log.isDebugEnabled()) {
-            log.debug("Update successful? " + bSuccess);
+            log.debug("Update successful? {}", bSuccess);
         }
 
     }
