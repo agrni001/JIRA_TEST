@@ -1,44 +1,39 @@
 package com.staples.asgard.core.exceptions.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Rest Error Object.
+ * Class to hold rest error to be returned by the API
  * @author Sapient
- * Date: Jan 9, 2014
+ * Date: Jan 13, 2014
  */
 public class RestError {
 	
-	private List<ErrorMap> errors;
+	private String errorCode;
+	private String errorMsg;
 	
 	public RestError(){
-		errors = new ArrayList<ErrorMap>();
+		errorCode = null;
+		errorMsg = null;
+	}
+
+	public RestError(String errorCode, String errorMsg){
+		this.errorCode = errorCode;
+		this.errorMsg = errorMsg;
 	}
 	
-	public List<ErrorMap> getErrors() {
-		return errors;
+	public String getErrorCode() {
+		return errorCode;
 	}
 	
-	public void setErrors(List<ErrorMap> errors){
-		this.errors = errors;
+	public void setErrorCode(String errorCode) {
+		this.errorCode = errorCode;
 	}
 	
-	/**
-	 * This will create an ErrorMap object and add that to the errors list.
-	 * @param errorCode
-	 * @param errorMessage
-	 */
-	public void addErrors(String errorCode, String errorMessage) {
-		errors.add(new ErrorMap(errorCode, errorMessage));
+	public String getErrorMsg() {
+		return errorMsg;
 	}
 	
-	/**
-	 * This will add the ErrorMap object directly to the list.
-	 * Use this when you have an already populated ErrorMap
-	 * @param errorMap
-	 */
-	public void addErrors(ErrorMap errorMap) {
-		errors.add(errorMap);
-	}	
+	public void setErrorMsg(String errorMsg) {
+		this.errorMsg = errorMsg;
+	}
+
 }

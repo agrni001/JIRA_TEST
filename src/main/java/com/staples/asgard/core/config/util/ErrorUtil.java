@@ -25,10 +25,9 @@ public class ErrorUtil {
 		
 		String outputErrorJSON = null;		
 				
-		/** Creating the RestError object **/
-		RestError restError = new RestError();
-		restError.addErrors(asgardError.getCode(), asgardError.getCustomMessage());
-
+		/** Creating the RestError object **/		
+		RestError restError = new RestError(asgardError.getCode(), asgardError.getCustomMessage());
+		
 		/** Converting the RestError object to JSON Format string **/
 		ObjectMapper mapper = new ObjectMapper();
 		try {
@@ -55,9 +54,8 @@ public class ErrorUtil {
 		String outputErrorJSON = null;		
 				
 		/** Creating the RestError object **/
-		RestError restError = new RestError();
-		restError.addErrors(asgardError.getCode(), errorMessage);
-
+		RestError restError = new RestError(asgardError.getCode(), errorMessage);
+		
 		/** Converting the RestError object to JSON Format string **/
 		ObjectMapper mapper = new ObjectMapper();
 		try {

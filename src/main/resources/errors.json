@@ -1,75 +1,75 @@
 {
     "errors": {
-        "J-BS-CT-001": {
-            "code": "J-BS-CT-001",
+        "JBS-CT-001": {
+            "code": "JBS-CT-001",
             "msg": "Error in Certona reponse"
         },
-        "J-BS-CT-002": {
-            "code": "J-BS-CT-002",
+        "JBS-CT-002": {
+            "code": "JBS-CT-002",
             "msg": "Error in Certona reponse - handleResponse"
         },
-        "J-BS-CT-003": {
-            "code": "J-BS-CT-003",
+        "JBS-CT-003": {
+            "code": "JBS-CT-003",
             "msg": "Error in Certona outbound gateway"
         }
-         "J-BS-CT-004": {
-            "code": "J-BS-CT-004",
+        "JBS-CT-004": {
+            "code": "JBS-CT-004",
             "msg": "Certona Input Parameter Validation failed"
         }
-        "J-BS-BR-001": {
-            "code": "J-BS-BR-001",
+        "JBS-BR-001": {
+            "code": "JBS-BR-001",
             "msg": "Error in BloomReach reponse"
         },
-        "J-BS-BR-002": {
-            "code": "J-BS-BR-002",
+        "JBS-BR-002": {
+            "code": "JBS-BR-002",
             "msg": "Error in BloomReach reponse - handleResponse"
         },      
-         "J-BS-BR-004": {
-            "code": "J-BS-BR-004",
+        "JBS-BR-004": {
+            "code": "JBS-BR-004",
             "msg": "BloomReach Input Parameter Validation failed"
         }
-        "J-BS-SI-001": {
-            "code": "J-BS-SI-001",
+        "JBS-SI-001": {
+            "code": "JBS-SI-001",
             "msg": "Error in Store Inventory response"
         },
-        "J-BS-SI-002": {
-            "code": "J-BS-SI-002",
+        "JBS-SI-002": {
+            "code": "JBS-SI-002",
             "msg": "Store Inventory Integration is InActive"
         },
-        "J-BS-SI-003": {
-            "code": "J-BS-SI-003",
+        "JBS-SI-003": {
+            "code": "JBS-SI-003",
             "msg": "Error in Store Inventory response"
         }
-         "J-BS-SI-004": {
-            "code": "J-BS-SI-004",
+        "JBS-SI-004": {
+            "code": "JBS-SI-004",
             "msg": "Store Inventory Input Parameter Validation failed"
         }
-        "J-BS-OI-001": {
-            "code": "J-BS-OI-001",
+        "JBS-OI-001": {
+            "code": "JBS-OI-001",
             "msg": "Error in Online Inventory response"
         },
-        "J-BS-OI-002": {
-            "code": "J-BS-OI-002",
+        "JBS-OI-002": {
+            "code": "JBS-OI-002",
             "msg": "Online Inventory Integration is InActive"
         },
-        "J-BS-OI-003": {
-            "code": "J-BS-OI-003",
+        "JBS-OI-003": {
+            "code": "JBS-OI-003",
             "msg": "Error in Online Inventory response"
         }
-         "J-BS-OI-004": {
-            "code": "J-BS-OI-004",
+        "JBS-OI-004": {
+            "code": "JBS-OI-004",
             "msg": "Online Inventory Input Parameter Validation failed"
         }
-        "J-BS-PR-001": {
-            "code": "J-BS-PR-001",
+        "JBS-PR-001": {
+            "code": "JBS-PR-001",
             "msg": "Error in Price reponse"
         },
-        "J-BS-PR-002": {
-            "code": "J-BS-PR-002",
+        "JBS-PR-002": {
+            "code": "JBS-PR-002",
             "msg": "Error in Price Outbound Gateway "
         },      
-         "J-BS-PR-004": {
-            "code": "J-BS-PR-004",
+        "JBS-PR-004": {
+            "code": "JBS-PR-004",
             "msg": "Price Input Parameter Validation failed"
         }
     }
