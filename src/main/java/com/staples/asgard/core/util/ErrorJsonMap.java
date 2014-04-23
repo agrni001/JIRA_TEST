@@ -43,13 +43,11 @@ public class ErrorJsonMap {
 
 			while(iter.hasNext()){
 	           	Map.Entry entry=(Map.Entry)iter.next();	           
-	           	System.out.println(entry.getKey());
 	           	JSONObject errorJson = (JSONObject) entry.getValue();
 	           	String code = (String) errorJson.get("code");
 	           	String msg = (String) errorJson.get("msg");
 	           	errorsMap.put(code, new AsgardError(code, msg));
 			}			
-			System.out.println(errors.toJSONString());
 		} catch (FileNotFoundException ex) {
 			LOG.error("File Not Found when attempting to load errors json", ex);
 		} catch (IOException ex) {
