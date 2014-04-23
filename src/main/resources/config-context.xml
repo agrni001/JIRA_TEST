@@ -27,7 +27,8 @@
 
 	<mvc:annotation-driven />
 	
-  
+  	<bean id="ErrorJsonLoader"
+		class="com.staples.asgard.core.util.ErrorJsonMap" init-method="init"/>
 
 	<!-- Any of the call going out to IG Should not take more than 5 sec to 
 		process in any case -->
