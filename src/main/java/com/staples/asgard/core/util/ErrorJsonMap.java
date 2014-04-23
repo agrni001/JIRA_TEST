@@ -38,7 +38,7 @@ public class ErrorJsonMap {
 	public void init() {
 		JSONParser parser = new JSONParser();		 
 		try {
-			System.out.println("Tiest");
+			System.out.println("Tiest errors.json");
 			LOG.info("Tiest errors.json");
 			Object obj = parser.parse(new BufferedReader(new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream("errors.json"))));
 			System.out.println("obj : "+obj);
