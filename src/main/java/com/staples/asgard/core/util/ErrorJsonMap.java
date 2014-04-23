@@ -20,6 +20,9 @@ import org.slf4j.LoggerFactory;
 import com.staples.asgard.core.exceptions.AsgardError;
 
 /**
+ * This class on startup loads the error codes and messages from JSON and stores it statically.
+ * It provides the code and messages to other consumers whenever requested  
+ *  
  * @author Sapient
  *
  */
@@ -27,16 +30,19 @@ public class ErrorJsonMap {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(ErrorJsonMap.class);
 	private static Map<String, AsgardError> errorsMap = new HashMap<String, AsgardError>();
-	
-	
-	ErrorJsonMap() {
+		
+	public ErrorJsonMap() {
 		init();
 	}
 
 	public void init() {
 		JSONParser parser = new JSONParser();		 
-		try {		 
-			Object obj = parser.parse(new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/errors.json"))));
+		try {
+			System.out.println("Tiest");
+			LOG.info("Tiest errors.json");
+			Object obj = parser.parse(new BufferedReader(new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream("errors.json"))));
+			System.out.println("obj : "+obj);
+			LOG.info("obj : "+obj);
 			JSONObject jsonObject = (JSONObject) obj;			 
 			JSONObject errors = (JSONObject) jsonObject.get("errors");
 			Iterator iter=errors.entrySet().iterator();
