@@ -20,7 +20,7 @@ import com.staples.asgard.core.exceptions.DatabaseException;
  * 
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath*:/META-INF/spring/integration/testContext.xml" })
+@ContextConfiguration(locations = { "classpath*:config-context.xml" })
 public class BaseUnitTest {
 	/**
 	 * Test set-up

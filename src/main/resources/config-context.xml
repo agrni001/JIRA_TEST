@@ -4,8 +4,7 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:oxm="http://www.springframework.org/schema/oxm" xmlns:stream="http://www.springframework.org/schema/integration/stream"
-	xmlns:util="http://www.springframework.org/schema/util"
-	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.3.xsd
 		http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.2.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
@@ -17,7 +16,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
 
 
-      <aop:aspectj-autoproxy proxy-target-class="true" />
+	<aop:aspectj-autoproxy proxy-target-class="true" />
 
 	<!-- Spring Integration core configuration -->
 
@@ -26,9 +25,9 @@
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 
 	<mvc:annotation-driven />
-	
-  	<bean id="ErrorJsonLoader"
-		class="com.staples.asgard.core.util.ErrorJsonMap" init-method="init"/>
+
+	<bean id="ErrorJsonLoader" class="com.staples.asgard.core.util.ErrorJsonMap"
+		init-method="init" />
 
 	<!-- Any of the call going out to IG Should not take more than 5 sec to 
 		process in any case -->
@@ -83,16 +82,15 @@
 	</bean>
 
 	<mongo:mongo host="${mongo.db.ip}" port="${mongo.db.port}">
-	<mongo:options connect-timeout="10000" 
-	               connections-per-host="50" 
-	               auto-connect-retry="true"	               
-	               />
- 	
+		<mongo:options connect-timeout="10000"
+			connections-per-host="50" auto-connect-retry="true" />
+
 	</mongo:mongo>
-	
-	<bean class="org.springframework.data.authentication.UserCredentials" id ="mongoCredentials">
-		<constructor-arg name="username" value="${mongo.db.dbusername}"/>
-		<constructor-arg name="password" value="${mongo.db.dbpassword}"/>
+
+	<bean class="org.springframework.data.authentication.UserCredentials"
+		id="mongoCredentials">
+		<constructor-arg name="username" value="${mongo.db.dbusername}" />
+		<constructor-arg name="password" value="${mongo.db.dbpassword}" />
 	</bean>
 
 	<!-- Offers convenience methods and automatic mapping between MongoDB JSON 
@@ -100,8 +98,8 @@
 	<bean class="org.springframework.data.mongodb.core.MongoTemplate"
 		id="mongoTemplate">
 		<constructor-arg ref="mongo" />
-		<constructor-arg name="databaseName" value="${mongo.db.dbname}"/> 
-		<constructor-arg name="userCredentials" ref="mongoCredentials"/>		
+		<constructor-arg name="databaseName" value="${mongo.db.dbname}" />
+		<constructor-arg name="userCredentials" ref="mongoCredentials" />
 	</bean>
 
 	<!-- Message Source - STARTS HERE -->
@@ -110,6 +108,8 @@
 		<property name="basenames">
 			<list>
 				<value>classpath:config/browse/properties/appConfig-#{systemProperties['Env']}
+				</value>
+				<value>classpath:config/browse/properties/messages
 				</value>
 			</list>
 		</property>
@@ -188,5 +188,5 @@
 	</bean>
 
 	<!-- Bean definition starts herer -->
-	
+
 </beans>
