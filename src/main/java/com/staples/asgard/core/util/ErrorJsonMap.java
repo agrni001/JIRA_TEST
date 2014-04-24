@@ -20,40 +20,55 @@ import org.slf4j.LoggerFactory;
 import com.staples.asgard.core.exceptions.AsgardError;
 
 /**
- * This class on startup loads the error codes and messages from JSON and stores it statically.
- * It provides the code and messages to other consumers whenever requested  
- *  
+ * This class on startup loads the error codes and messages from JSON and stores
+ * it statically. It provides the code and messages to other consumers whenever
+ * requested
+ * 
  * @author Sapient
- *
+ * 
  */
 public class ErrorJsonMap {
-	
-	private static final Logger LOG = LoggerFactory.getLogger(ErrorJsonMap.class);
+
+	private static final Logger LOG = LoggerFactory
+			.getLogger(ErrorJsonMap.class);
 	private static Map<String, AsgardError> errorsMap = new HashMap<String, AsgardError>();
-		
+
 	public ErrorJsonMap() {
 		init();
 	}
 
 	public void init() {
-		JSONParser parser = new JSONParser();		 
+		JSONParser parser = new JSONParser();
 		try {
-			System.out.println("Tiest errors.json");
 			LOG.info("Tiest errors.json");
-			Object obj = parser.parse(new BufferedReader(new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream("errors.json"))));
-			System.out.println("obj : "+obj);
-			LOG.info("obj : "+obj);
-			JSONObject jsonObject = (JSONObject) obj;			 
-			JSONObject errors = (JSONObject) jsonObject.get("errors");
-			Iterator iter=errors.entrySet().iterator();
+			BufferedReader bufferedReader = new BufferedReader(
+					new InputStreamReader(
+							ErrorJsonMap.class
+									.getResourceAsStream("/errors.json")));
+			Object obj = null;
+			if (null != bufferedReader) {
+				obj = parser.parse(bufferedReader);
+			}
+			/*
+			 * Object obj = parser.parse(new BufferedReader(new
+			 * InputStreamReader( Thread.currentThread().getContextClassLoader()
+			 * .getResourceAsStream("errors.json"))));
+			 */
+			if (null != obj) {
+				LOG.info("obj : " + obj);
+				JSONObject jsonObject = (JSONObject) obj;
+				JSONObject errors = (JSONObject) jsonObject.get("errors");
+				Iterator iter = errors.entrySet().iterator();
 
-			while(iter.hasNext()){
-	           	Map.Entry entry=(Map.Entry)iter.next();	           
-	           	JSONObject errorJson = (JSONObject) entry.getValue();
-	           	String code = (String) errorJson.get("code");
-	           	String msg = (String) errorJson.get("msg");
-	           	errorsMap.put(code, new AsgardError(code, msg));
-			}			
+				while (iter.hasNext()) {
+					Map.Entry entry = (Map.Entry) iter.next();
+					JSONObject errorJson = (JSONObject) entry.getValue();
+					String code = (String) errorJson.get("code");
+					String msg = (String) errorJson.get("msg");
+					errorsMap.put(code, new AsgardError(code, msg));
+				}
+			}
+
 		} catch (FileNotFoundException ex) {
 			LOG.error("File Not Found when attempting to load errors json", ex);
 		} catch (IOException ex) {
@@ -62,9 +77,9 @@ public class ErrorJsonMap {
 			LOG.error("ParseException when attempting to parse errors json", ex);
 		}
 	}
-	
+
 	public static AsgardError getError(String key) {
-		return (AsgardError)errorsMap.get(key);
+		return (AsgardError) errorsMap.get(key);
 	}
-	
+
 }
