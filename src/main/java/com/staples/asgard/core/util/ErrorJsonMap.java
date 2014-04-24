@@ -47,19 +47,13 @@ public class ErrorJsonMap {
 		JSONParser parser = new JSONParser();
 		try {
 			LOG.info("Tiest errors.json");
-			BufferedReader bufferedReader = new BufferedReader(
-					new InputStreamReader(
-							ErrorJsonMap.class
-									.getResourceAsStream("/errors.json")));
-			Object obj = null;
-			if (null != bufferedReader) {
-				obj = parser.parse(bufferedReader);
-			}
-			/*
-			 * Object obj = parser.parse(new BufferedReader(new
-			 * InputStreamReader( Thread.currentThread().getContextClassLoader()
-			 * .getResourceAsStream("errors.json"))));
-			 */
+
+			Object obj = parser.parse(new BufferedReader(new InputStreamReader(
+					Thread.currentThread().getContextClassLoader()
+							.getResourceAsStream("errors.json"))));
+
+			LOG.info("obj : " + obj);
+
 			if (null != obj) {
 				LOG.info("obj : " + obj);
 				JSONObject jsonObject = (JSONObject) obj;
