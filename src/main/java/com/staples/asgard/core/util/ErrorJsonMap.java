@@ -33,10 +33,16 @@ public class ErrorJsonMap {
 			.getLogger(ErrorJsonMap.class);
 	private static Map<String, AsgardError> errorsMap = new HashMap<String, AsgardError>();
 
+	/**
+	 * 
+	 */
 	public ErrorJsonMap() {
 		init();
 	}
 
+	/**
+	 * 
+	 */
 	public void init() {
 		JSONParser parser = new JSONParser();
 		try {
