@@ -9,8 +9,16 @@
 		</layout>
 	</appender>
 
+	<appender name="SOAP" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="${tc.instance.home}/logs/ig-trace.log" />
+		<param name="append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss,SSS} [%t] %c %x %p- %m%n" />
+		</layout>
+	</appender>
+
 	<appender name="DEBUG" class="org.apache.log4j.RollingFileAppender">
-		<param name="file" value="${tc.instance.home}/logs/browse-debug.log" />
+		<param name="file" value="${tc.instance.home}/logs/ig-debug.log" />
 		<param name="append" value="true" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss,SSS} [%t] %c %x %p- %m%n" />
@@ -18,7 +26,7 @@
 	</appender>
 
 	<appender name="SYSTEM" class="org.apache.log4j.RollingFileAppender">
-		<param name="file" value="${tc.instance.home}/logs/browse-system.log" />
+		<param name="file" value="${tc.instance.home}/logs/ig-system.log" />
 		<param name="append" value="true" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss,SSS} [%t] %c %x %p- %m%n" />
@@ -26,7 +34,7 @@
 	</appender>
 
 	<appender name="EXCEPTION" class="org.apache.log4j.RollingFileAppender">
-		<param name="file" value="${tc.instance.home}/logs/browse-exception.log" />
+		<param name="file" value="${tc.instance.home}/logs/ig-exception.log" />
 		<param name="Threshold" value="ERROR" />
 		<param name="Append" value="true" />
 		<layout class="org.apache.log4j.PatternLayout">
@@ -37,6 +45,16 @@
 	<!-- *************************************** END - APPENDERS *************************************** -->
 
 	<!-- *************************************** START - LOGGERS *************************************** -->
+
+	<logger name="org.springframework.ws.client.MessageTracing.sent">
+		<level value="TRACE" />
+		<appender-ref ref="SOAP" />
+	</logger>
+
+	<logger name="org.springframework.ws.client.MessageTracing.received">
+		<level value="TRACE" />
+		<appender-ref ref="SOAP" />
+	</logger>
 
 	<logger name="com.staples" additivity="false">
 		<level value="info" />
@@ -53,6 +71,8 @@
 		<appender-ref ref="CONSOLE" />
 	</logger>
 
+	<!-- 3rdparty Loggers -->
+
 	<logger name="org.springframework" additivity="false">
 		<level value="info" />
 		<appender-ref ref="CONSOLE" />
@@ -61,10 +81,11 @@
 	<!-- *************************************** END - LOGGERS *************************************** -->
 
 	<root>
-		<priority value="DEBUG" />
+		<priority value="INFO" />
 		<appender-ref ref="DEBUG" />
 		<appender-ref ref="SYSTEM" />
 		<appender-ref ref="EXCEPTION" />
 		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="SOAP" />
 	</root>
 </log4j:configuration>
