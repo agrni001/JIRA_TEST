@@ -1,21 +1,23 @@
 package com.staples.asgard.core.domain.model.price;
 
-import static com.staples.asgard.core.constants.PriceConstants.DEFAULT_ZONE;
-
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.staples.asgard.core.config.price.PriceConfig;
+import com.staples.asgard.core.util.ContextUtil;
 
 /**
  * @author srani
  * 
  */
+@Component
 @JsonAutoDetect(getterVisibility = Visibility.PUBLIC_ONLY, setterVisibility = Visibility.PUBLIC_ONLY, fieldVisibility = Visibility.PUBLIC_ONLY)
 @JsonInclude(Include.NON_NULL)
 public class PriceRequest implements Serializable {
@@ -24,6 +26,10 @@ public class PriceRequest implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 4592538709068555459L;
+
+	/*
+	 * @Autowired PriceConfig priceConfig;
+	 */
 
 	public PriceRequest(
 			org.springframework.util.LinkedMultiValueMap requestParaMultiValueMap) {
@@ -49,8 +55,8 @@ public class PriceRequest implements Serializable {
 	private String locale = null;
 	private String geoZoneId = null;
 	private String topCustomerZoneId = null;
-	// TODO pick from the MONGO
-	private String defaultZoneId = DEFAULT_ZONE;
+
+	private String defaultZoneId = null;// DEFAULT_ZONE;
 
 	private String skuListForPrice = null;
 
@@ -152,6 +158,9 @@ public class PriceRequest implements Serializable {
 	 * @return
 	 */
 	public String getDefaultZoneId() {
+		PriceConfig priceConfig = (PriceConfig) ContextUtil
+				.getBean("PriceConfig");
+		this.defaultZoneId = priceConfig.getDefaultZone();
 		return defaultZoneId;
 	}
 
@@ -159,7 +168,9 @@ public class PriceRequest implements Serializable {
 	 * @param defaultZoneId
 	 */
 	public void setDefaultZoneId(String defaultZoneId) {
-		this.defaultZoneId = defaultZoneId;
+		PriceConfig priceConfig = (PriceConfig) ContextUtil
+				.getBean("PriceConfig");
+		this.defaultZoneId = priceConfig.getDefaultZone();
 	}
 
 	/**
