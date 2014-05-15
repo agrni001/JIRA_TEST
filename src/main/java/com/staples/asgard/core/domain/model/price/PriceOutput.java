@@ -1,17 +1,36 @@
 package com.staples.asgard.core.domain.model.price;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 /**
+ * Price Output - MONGO
+ * 
  * @author srani
  * 
  */
 @JsonAutoDetect(getterVisibility = Visibility.PUBLIC_ONLY, setterVisibility = Visibility.PUBLIC_ONLY, fieldVisibility = Visibility.PUBLIC_ONLY)
 @JsonInclude(Include.NON_NULL)
 public class PriceOutput {
+
+	/**
+	 * 
+	 */
+	public PriceOutput() {
+		super();
+	}
+
+	/**
+	 * @param _id
+	 */
+	public PriceOutput(ID _id) {
+		super();
+		this._id = _id;
+	}
 
 	private int user_price_flag;
 
@@ -23,13 +42,13 @@ public class PriceOutput {
 		return user_price_flag;
 	}
 
-	private Offers[] offers;
+	private List<Offers> offers;
 
-	public void setOffers(Offers[] offers) {
+	public void setOffers(List<Offers> offers) {
 		this.offers = offers;
 	}
 
-	public Offers[] getOffers() {
+	public List<Offers> getOffers() {
 		return offers;
 	}
 
@@ -43,13 +62,13 @@ public class PriceOutput {
 		return currency;
 	}
 
-	private Rebate[] rebates;
+	private List<Rebate> rebates;
 
-	public void setRebates(Rebate[] rebates) {
+	public void setRebates(List<Rebate> rebates) {
 		this.rebates = rebates;
 	}
 
-	public Rebate[] getRebates() {
+	public List<Rebate> getRebates() {
 		return rebates;
 	}
 
@@ -82,7 +101,5 @@ public class PriceOutput {
 	public void set_id(ID _id) {
 		this._id = _id;
 	}
-	
-
 
 }

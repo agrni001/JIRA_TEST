@@ -29,12 +29,14 @@ public class PriceResponse {
 	private boolean displayRegPricing = false;
 	private boolean displayWasPricing = false;
 
-	private Offers[] buyMoreSaveMoreDetail = null;
+	private List<Offers> buyMoreSaveMoreDetail = null;
 	private List<PromoMessage> promotion = null;
 	private Autoaddpromotion coupon = null;
 	private List<Rebate> rebate = null;
 
 	private String unitOfMeasure = null;
+
+	private boolean noDataFound = true;
 
 	public String getId() {
 		return id;
@@ -100,11 +102,11 @@ public class PriceResponse {
 		this.displayWasPricing = displayWasPricing;
 	}
 
-	public Offers[] getBuyMoreSaveMoreDetail() {
+	public List<Offers> getBuyMoreSaveMoreDetail() {
 		return buyMoreSaveMoreDetail;
 	}
 
-	public void setBuyMoreSaveMoreDetail(Offers[] buyMoreSaveMoreDetail) {
+	public void setBuyMoreSaveMoreDetail(List<Offers> buyMoreSaveMoreDetail) {
 		this.buyMoreSaveMoreDetail = buyMoreSaveMoreDetail;
 	}
 
@@ -138,6 +140,14 @@ public class PriceResponse {
 
 	public void setUnitOfMeasure(String unitOfMeasure) {
 		this.unitOfMeasure = unitOfMeasure;
+	}
+
+	public boolean isNoDataFound() {
+		return noDataFound;
+	}
+
+	public void setNoDataFound(boolean noDataFound) {
+		this.noDataFound = noDataFound;
 	}
 
 }
