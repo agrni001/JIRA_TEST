@@ -46,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
  * </pre>
  */
 @XmlAccessorType (XmlAccessType.FIELD)
-@XmlType (name = "getMultiOnHandReq", propOrder = { "requesterId", "itemId", "storeNum", "locale", "itemDetails" })
+@XmlType (name = "getMultiOnHandReq", propOrder = { "requesterId", "locale", "itemDetails" })
 @XmlRootElement (name = "getMultiOnHandReq")
 @JsonAutoDetect (getterVisibility = Visibility.PROTECTED_AND_PUBLIC,
 				setterVisibility = Visibility.PROTECTED_AND_PUBLIC, fieldVisibility = Visibility.PROTECTED_AND_PUBLIC)
@@ -92,9 +92,9 @@ public class GetMultiOnHandReq implements Serializable {
 	/*
 	 * Needed for the Transformation only Not a part of the Object to be made the Service call.
 	 */
-	@XmlElement (required = true)
+	@XmlTransient
 	protected String itemId;
-	@XmlElement (required = true)
+	@XmlTransient
 	protected String storeNum;
 
 	@XmlElement (required = true)
