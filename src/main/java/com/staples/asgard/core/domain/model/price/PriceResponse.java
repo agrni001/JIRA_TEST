@@ -36,6 +36,8 @@ public class PriceResponse {
 
 	private String unitOfMeasure = null;
 
+	private boolean noDataFound = true;
+
 	public String getId() {
 		return id;
 	}
@@ -138,6 +140,14 @@ public class PriceResponse {
 
 	public void setUnitOfMeasure(String unitOfMeasure) {
 		this.unitOfMeasure = unitOfMeasure;
+	}
+
+	public boolean isNoDataFound() {
+		return noDataFound;
+	}
+
+	public void setNoDataFound(boolean noDataFound) {
+		this.noDataFound = noDataFound;
 	}
 
 }

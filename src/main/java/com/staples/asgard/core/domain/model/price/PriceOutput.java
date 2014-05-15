@@ -13,6 +13,21 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class PriceOutput {
 
+	/**
+	 * 
+	 */
+	public PriceOutput() {
+		super();
+	}
+
+	/**
+	 * @param _id
+	 */
+	public PriceOutput(ID _id) {
+		super();
+		this._id = _id;
+	}
+
 	private int user_price_flag;
 
 	public void setUser_price_flag(int user_price_flag) {
@@ -82,7 +97,5 @@ public class PriceOutput {
 	public void set_id(ID _id) {
 		this._id = _id;
 	}
-	
-
 
 }

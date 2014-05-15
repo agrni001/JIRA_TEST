@@ -1,11 +1,15 @@
 package com.staples.asgard.core.domain.model.inventory;
 
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.NotEmpty;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * @author srani
@@ -19,10 +23,14 @@ public class SKUOnlineInventoryVO {
 	private Integer minLeadTime;
 	private Integer maxLeadTime;
 
+	@JsonSerialize(using = CustomDateSerializer.class)
 	private Date minDeliveryDate;
+	@JsonSerialize(using = CustomDateSerializer.class)
 	private Date maxDeliveryDate;
+
 	private Integer minDeliveryTime;
 	private Integer maxDeliveryTime;
+
 	private Integer requestedQuantity;
 
 	public SKUOnlineInventoryVO() {
@@ -144,5 +152,44 @@ public class SKUOnlineInventoryVO {
 
 	public void setRequestedQuantity(Integer requestedQuantity) {
 		this.requestedQuantity = requestedQuantity;
+	}
+}
+
+/**
+ * Custom Date serializer to display DATE - in a Date format but not
+ * milliSeconds.
+ * 
+ * @author srani
+ * 
+ */
+class CustomDateSerializer extends JsonSerializer<Date> {
+
+	private String ONLINE_INVENTORY_DATE_FORMAT = "EEE MMM dd hh:mm:ss ZZZ yyyy";
+
+	private String DATE_FORMAT_STR_RFC1123 = "EEE, dd MMM yyyy HH:mm:ss zzz";
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.fasterxml.jackson.databind.JsonSerializer#serialize(java.lang.Object,
+	 * com.fasterxml.jackson.core.JsonGenerator,
+	 * com.fasterxml.jackson.databind.SerializerProvider)
+	 */
+	@Override
+	public void serialize(Date value, JsonGenerator jsonGenerator,
+			SerializerProvider serializerProvider) throws IOException,
+			JsonProcessingException {
+		try {
+			SimpleDateFormat originalFormat = new SimpleDateFormat(
+					ONLINE_INVENTORY_DATE_FORMAT);
+			SimpleDateFormat targetFormat = new SimpleDateFormat(
+					DATE_FORMAT_STR_RFC1123);
+			Date date = originalFormat.parse(value.toString());
+			String formattedDate = targetFormat.format(date);
+			jsonGenerator.writeString(formattedDate.toString());
+		} catch (ParseException e) {
+			// DO NOTHING
+		}
 	}
 }
