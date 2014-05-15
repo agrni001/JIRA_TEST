@@ -1,11 +1,15 @@
 package com.staples.asgard.core.domain.model.price;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 /**
+ * Price Output - MONGO
+ * 
  * @author srani
  * 
  */
@@ -38,13 +42,13 @@ public class PriceOutput {
 		return user_price_flag;
 	}
 
-	private Offers[] offers;
+	private List<Offers> offers;
 
-	public void setOffers(Offers[] offers) {
+	public void setOffers(List<Offers> offers) {
 		this.offers = offers;
 	}
 
-	public Offers[] getOffers() {
+	public List<Offers> getOffers() {
 		return offers;
 	}
 
@@ -58,13 +62,13 @@ public class PriceOutput {
 		return currency;
 	}
 
-	private Rebate[] rebates;
+	private List<Rebate> rebates;
 
-	public void setRebates(Rebate[] rebates) {
+	public void setRebates(List<Rebate> rebates) {
 		this.rebates = rebates;
 	}
 
-	public Rebate[] getRebates() {
+	public List<Rebate> getRebates() {
 		return rebates;
 	}
 

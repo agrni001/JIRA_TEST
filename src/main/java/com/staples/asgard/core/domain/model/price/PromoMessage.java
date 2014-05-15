@@ -1,5 +1,7 @@
 package com.staples.asgard.core.domain.model.price;
 
+import java.math.BigDecimal;
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -7,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 /**
  * @author srani
- *
+ * 
  */
 @JsonAutoDetect(getterVisibility = Visibility.PUBLIC_ONLY, setterVisibility = Visibility.PUBLIC_ONLY, fieldVisibility = Visibility.PUBLIC_ONLY)
 @JsonInclude(Include.NON_NULL)
@@ -71,13 +73,13 @@ public class PromoMessage {
 		return name;
 	}
 
-	private java.lang.String promopricevalue;
+	private BigDecimal promopricevalue;
 
-	public void setPromopricevalue(java.lang.String promopricevalue) {
+	public void setPromopricevalue(BigDecimal promopricevalue) {
 		this.promopricevalue = promopricevalue;
 	}
 
-	public java.lang.String getPromopricevalue() {
+	public BigDecimal getPromopricevalue() {
 		return promopricevalue;
 	}
 

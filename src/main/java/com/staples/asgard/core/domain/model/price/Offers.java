@@ -24,13 +24,13 @@ public class Offers {
 		return tradeposcn_id;
 	}
 
-	private java.lang.String qtylimit;
+	private Integer qtylimit;
 
-	public void setQtylimit(java.lang.String qtylimit) {
+	public void setQtylimit(Integer qtylimit) {
 		this.qtylimit = qtylimit;
 	}
 
-	public java.lang.String getQtylimit() {
+	public Integer getQtylimit() {
 		return qtylimit;
 	}
 
@@ -44,23 +44,23 @@ public class Offers {
 		return compareprice;
 	}
 
-	private java.lang.String maxqty;
+	private Integer maxqty;
 
-	public void setMaxqty(java.lang.String maxqty) {
+	public void setMaxqty(Integer maxqty) {
 		this.maxqty = maxqty;
 	}
 
-	public java.lang.String getMaxqty() {
+	public Integer getMaxqty() {
 		return maxqty;
 	}
 
-	private java.lang.String minimumqty;
+	private Integer minimumqty;
 
-	public void setMinimumqty(java.lang.String minimumqty) {
+	public void setMinimumqty(Integer minimumqty) {
 		this.minimumqty = minimumqty;
 	}
 
-	public java.lang.String getMinimumqty() {
+	public Integer getMinimumqty() {
 		return minimumqty;
 	}
 

@@ -29,7 +29,7 @@ public class PriceResponse {
 	private boolean displayRegPricing = false;
 	private boolean displayWasPricing = false;
 
-	private Offers[] buyMoreSaveMoreDetail = null;
+	private List<Offers> buyMoreSaveMoreDetail = null;
 	private List<PromoMessage> promotion = null;
 	private Autoaddpromotion coupon = null;
 	private List<Rebate> rebate = null;
@@ -102,11 +102,11 @@ public class PriceResponse {
 		this.displayWasPricing = displayWasPricing;
 	}
 
-	public Offers[] getBuyMoreSaveMoreDetail() {
+	public List<Offers> getBuyMoreSaveMoreDetail() {
 		return buyMoreSaveMoreDetail;
 	}
 
-	public void setBuyMoreSaveMoreDetail(Offers[] buyMoreSaveMoreDetail) {
+	public void setBuyMoreSaveMoreDetail(List<Offers> buyMoreSaveMoreDetail) {
 		this.buyMoreSaveMoreDetail = buyMoreSaveMoreDetail;
 	}
 
