@@ -13,6 +13,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
@@ -46,7 +47,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
  * </pre>
  */
 @XmlAccessorType (XmlAccessType.FIELD)
-@XmlType (name = "getMultiOnHandReq", propOrder = { "requesterId", "locale", "itemDetails" })
+@XmlType (name = "getMultiOnHandReq", propOrder = { "itemId", "storeNum", "requesterId", "locale", "itemDetails" })
 @XmlRootElement (name = "getMultiOnHandReq")
 @JsonAutoDetect (getterVisibility = Visibility.PROTECTED_AND_PUBLIC,
 				setterVisibility = Visibility.PROTECTED_AND_PUBLIC, fieldVisibility = Visibility.PROTECTED_AND_PUBLIC)
@@ -57,6 +58,20 @@ public class GetMultiOnHandReq implements Serializable {
 
 	private static final long serialVersionUID = -4252825456450806156L;
 
+	/**
+	 * Default Constructor
+	 */
+	public GetMultiOnHandReq() {
+		super();
+	}
+
+	/**
+	 * This Method Extracts the REquest Values and then Creates the Object that needs to validated
+	 * and then transformed for the Browse to IG invocation. BeanUtils.populate is NOT being used as
+	 * there are Multiple Object iterations that need to be considered.
+	 * 
+	 * @param requestParaMultiValueMap Type Of LinkedMultiValueMap<String, String>
+	 */
 	public GetMultiOnHandReq(LinkedMultiValueMap<String, String> requestParaMultiValueMap) {
 		super();
 		try {
@@ -67,14 +82,11 @@ public class GetMultiOnHandReq implements Serializable {
 			if (requestParaMultiValueMap.get("storeNum") != null) {
 				this.setStoreNum(requestParaMultiValueMap.get("storeNum").get(0));
 			}
-			RequestItem requestItemDetails = new RequestItem();
-			requestItemDetails.setItemId(this.getItemId());
-			requestItemDetails.setStoreNum(this.getStoreNum());
 
 			/* Instantiate Object to pass the Item ID and Store Number */
-			GetAllitemsDetailReqType objItemDetails = new GetAllitemsDetailReqType();
-			objItemDetails.getItem().add(requestItemDetails);
-			this.setItemDetails(objItemDetails);
+			RequestItem[] requestItem = new RequestItem[1];
+			requestItem[0] = new RequestItem(this.getItemId(), this.getStoreNum());
+			this.setItemDetails(requestItem);
 
 			/* Requester ID and Locale */
 			if (requestParaMultiValueMap.get("requesterId") != null) {
@@ -92,17 +104,19 @@ public class GetMultiOnHandReq implements Serializable {
 	/*
 	 * Needed for the Transformation only Not a part of the Object to be made the Service call.
 	 */
-	@XmlTransient
+	@XmlElement
 	protected String itemId;
-	@XmlTransient
+	@XmlElement
 	protected String storeNum;
 
 	@XmlElement (required = true)
 	protected String requesterId;
 	@XmlElement (required = true)
 	protected String locale;
-	@XmlElement (required = false)
-	protected GetAllitemsDetailReqType itemDetails;
+	// @XmlElement
+	// protected GetAllitemsDetailReqType itemDetails;
+
+	protected RequestItem[] itemDetails;
 
 	@XmlTransient
 	protected String errors;
@@ -146,19 +160,19 @@ public class GetMultiOnHandReq implements Serializable {
 	/**
 	 * Gets the value of the itemDetails property.
 	 * 
-	 * @return possible object is {@link GetAllitemsDetailReqType }
+	 * @return possible object is {@link RequestItem[] }
 	 */
-	public GetAllitemsDetailReqType getItemDetails() {
+	public RequestItem[] getItemDetails() {
 		return itemDetails;
 	}
 
 	/**
 	 * Sets the value of the itemDetails property.
 	 * 
-	 * @param value allowed object is {@link GetAllitemsDetailReqType }
+	 * @param value allowed object is {@link RequestItem[] }
 	 */
-	public void setItemDetails(GetAllitemsDetailReqType value) {
-		this.itemDetails = value;
+	public void setItemDetails(RequestItem[] itemDetails) {
+		this.itemDetails = itemDetails;
 	}
 
 	/**
@@ -214,5 +228,4 @@ public class GetMultiOnHandReq implements Serializable {
 	public void setErrors(String errors) {
 		this.errors = errors;
 	}
-
 }
