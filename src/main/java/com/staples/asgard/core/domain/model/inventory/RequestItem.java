@@ -37,7 +37,12 @@ public class RequestItem implements Serializable {
 	@XmlElement (required = true)
 	protected String storeNum;
 
+	public RequestItem() {
+		super();
+	}
+
 	public RequestItem(java.lang.String itemId, java.lang.String storeNum) {
+		super();
 		this.itemId = itemId;
 		this.storeNum = storeNum;
 	}

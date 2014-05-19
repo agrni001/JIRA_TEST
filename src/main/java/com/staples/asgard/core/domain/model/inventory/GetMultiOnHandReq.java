@@ -13,7 +13,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
@@ -82,11 +81,14 @@ public class GetMultiOnHandReq implements Serializable {
 			if (requestParaMultiValueMap.get("storeNum") != null) {
 				this.setStoreNum(requestParaMultiValueMap.get("storeNum").get(0));
 			}
+			RequestItem requestItemDetails = new RequestItem();
+			requestItemDetails.setItemId(this.getItemId());
+			requestItemDetails.setStoreNum(this.getStoreNum());
 
 			/* Instantiate Object to pass the Item ID and Store Number */
-			RequestItem[] requestItem = new RequestItem[1];
-			requestItem[0] = new RequestItem(this.getItemId(), this.getStoreNum());
-			this.setItemDetails(requestItem);
+			GetAllitemsDetailReqType objItemDetails = new GetAllitemsDetailReqType();
+			objItemDetails.getItem().add(requestItemDetails);
+			this.setItemDetails(objItemDetails);
 
 			/* Requester ID and Locale */
 			if (requestParaMultiValueMap.get("requesterId") != null) {
@@ -114,9 +116,7 @@ public class GetMultiOnHandReq implements Serializable {
 	@XmlElement (required = true)
 	protected String locale;
 	// @XmlElement
-	// protected GetAllitemsDetailReqType itemDetails;
-
-	protected RequestItem[] itemDetails;
+	protected GetAllitemsDetailReqType itemDetails;
 
 	@XmlTransient
 	protected String errors;
@@ -158,24 +158,6 @@ public class GetMultiOnHandReq implements Serializable {
 	}
 
 	/**
-	 * Gets the value of the itemDetails property.
-	 * 
-	 * @return possible object is {@link RequestItem[] }
-	 */
-	public RequestItem[] getItemDetails() {
-		return itemDetails;
-	}
-
-	/**
-	 * Sets the value of the itemDetails property.
-	 * 
-	 * @param value allowed object is {@link RequestItem[] }
-	 */
-	public void setItemDetails(RequestItem[] itemDetails) {
-		this.itemDetails = itemDetails;
-	}
-
-	/**
 	 * Gets the value of the itemId property.
 	 * 
 	 * @return possible object is {@link String }
@@ -209,6 +191,24 @@ public class GetMultiOnHandReq implements Serializable {
 	 */
 	public void setStoreNum(String storeNum) {
 		this.storeNum = storeNum;
+	}
+
+	/**
+	 * Gets the value of the itemDetails property.
+	 * 
+	 * @return possible object is {@link GetAllitemsDetailReqType }
+	 */
+	public GetAllitemsDetailReqType getItemDetails() {
+		return itemDetails;
+	}
+
+	/**
+	 * Sets the value of the itemDetails property.
+	 * 
+	 * @param value allowed object is {@link GetAllitemsDetailReqType }
+	 */
+	public void setItemDetails(GetAllitemsDetailReqType itemDetails) {
+		this.itemDetails = itemDetails;
 	}
 
 	/**
