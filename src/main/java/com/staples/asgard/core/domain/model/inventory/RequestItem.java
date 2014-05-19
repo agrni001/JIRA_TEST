@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -28,13 +29,14 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType (XmlAccessType.FIELD)
 @XmlType (name = "requestItem", propOrder = { "itemId", "storeNum" })
+@XmlRootElement (name = "item", namespace = "http://is.mvs.staples.com/")
 public class RequestItem implements Serializable {
 
 	private static final long serialVersionUID = -4252825432130806156L;
 
-	@XmlElement (required = true)
+	@XmlElement (required = true, namespace = "http://is.mvs.staples.com/")
 	protected String itemId;
-	@XmlElement (required = true)
+	@XmlElement (required = true, namespace = "http://is.mvs.staples.com/")
 	protected String storeNum;
 
 	public RequestItem() {

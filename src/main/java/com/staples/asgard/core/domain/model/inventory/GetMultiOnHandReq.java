@@ -46,8 +46,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
  * </pre>
  */
 @XmlAccessorType (XmlAccessType.FIELD)
-@XmlType (name = "getMultiOnHandReq", propOrder = { "itemId", "storeNum", "requesterId", "locale", "itemDetails" })
-@XmlRootElement (name = "getMultiOnHandReq")
+@XmlType (name = "getMultiOnHandReq", propOrder = { "requesterId", "locale", "itemDetails" })
+@XmlRootElement (name = "getMultiOnHandReq", namespace = "http://is.mvs.staples.com/")
 @JsonAutoDetect (getterVisibility = Visibility.PROTECTED_AND_PUBLIC,
 				setterVisibility = Visibility.PROTECTED_AND_PUBLIC, fieldVisibility = Visibility.PROTECTED_AND_PUBLIC)
 @JsonInclude (Include.NON_NULL)
@@ -106,16 +106,16 @@ public class GetMultiOnHandReq implements Serializable {
 	/*
 	 * Needed for the Transformation only Not a part of the Object to be made the Service call.
 	 */
-	@XmlElement
+	@XmlTransient
 	protected String itemId;
-	@XmlElement
+	@XmlTransient
 	protected String storeNum;
 
-	@XmlElement (required = true)
+	@XmlElement (required = true, namespace = "http://is.mvs.staples.com/")
 	protected String requesterId;
-	@XmlElement (required = true)
+	@XmlElement (required = true, namespace = "http://is.mvs.staples.com/")
 	protected String locale;
-	// @XmlElement
+	@XmlElement (namespace = "http://is.mvs.staples.com/")
 	protected GetAllitemsDetailReqType itemDetails;
 
 	@XmlTransient

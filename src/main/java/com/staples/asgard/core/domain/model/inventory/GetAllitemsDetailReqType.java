@@ -6,6 +6,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -28,9 +29,10 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType (XmlAccessType.FIELD)
 @XmlType (name = "getAllitemsDetailReqType", propOrder = { "item" })
+@XmlRootElement (name = "itemDetails", namespace = "http://is.mvs.staples.com/")
 public class GetAllitemsDetailReqType {
 
-	@XmlElement (required = true)
+	@XmlElement (required = true, name = "item", namespace = "http://is.mvs.staples.com/")
 	protected List<RequestItem> item;
 
 	/**
