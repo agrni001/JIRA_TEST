@@ -5,19 +5,21 @@
 // Generated on: 2014.05.07 at 01:43:26 PM EDT 
 //
 
-
 package com.staples.asgard.core.domain.model.inventory;
+
+import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for getMultiOnHandResHdrType complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * Java class for getMultiOnHandResHdrType complex type.
+ * <p>
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="getMultiOnHandResHdrType">
@@ -32,94 +34,76 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getMultiOnHandResHdrType", propOrder = {
-    "status",
-    "statusDesc",
-    "histSeqNum"
-})
-public class GetMultiOnHandResHdrType {
+@XmlAccessorType (XmlAccessType.FIELD)
+@XmlType (name = "getMultiOnHandResHdrType", propOrder = { "status", "statusDesc", "histSeqNum" })
+@XmlRootElement (name = "multiOnHandResHdr", namespace = "http://is.mvs.staples.com/")
+public class GetMultiOnHandResHdrType implements Serializable {
 
-    @XmlElement(required = true)
-    protected String status;
-    @XmlElement(required = true)
-    protected String statusDesc;
-    @XmlElement(required = true)
-    protected String histSeqNum;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 13924682356L;
 
-    /**
-     * Gets the value of the status property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getStatus() {
-        return status;
-    }
+	@XmlElement (required = true, namespace = "http://is.mvs.staples.com/")
+	protected String status;
+	@XmlElement (required = true, namespace = "http://is.mvs.staples.com/")
+	protected String statusDesc;
+	@XmlElement (required = true, namespace = "http://is.mvs.staples.com/")
+	protected String histSeqNum;
 
-    /**
-     * Sets the value of the status property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setStatus(String value) {
-        this.status = value;
-    }
+	/**
+	 * Gets the value of the status property.
+	 * 
+	 * @return possible object is {@link String }
+	 */
+	public String getStatus() {
+		return status;
+	}
 
-    /**
-     * Gets the value of the statusDesc property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getStatusDesc() {
-        return statusDesc;
-    }
+	/**
+	 * Sets the value of the status property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 */
+	public void setStatus(String value) {
+		this.status = value;
+	}
 
-    /**
-     * Sets the value of the statusDesc property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setStatusDesc(String value) {
-        this.statusDesc = value;
-    }
+	/**
+	 * Gets the value of the statusDesc property.
+	 * 
+	 * @return possible object is {@link String }
+	 */
+	public String getStatusDesc() {
+		return statusDesc;
+	}
 
-    /**
-     * Gets the value of the histSeqNum property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getHistSeqNum() {
-        return histSeqNum;
-    }
+	/**
+	 * Sets the value of the statusDesc property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 */
+	public void setStatusDesc(String value) {
+		this.statusDesc = value;
+	}
 
-    /**
-     * Sets the value of the histSeqNum property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setHistSeqNum(String value) {
-        this.histSeqNum = value;
-    }
+	/**
+	 * Gets the value of the histSeqNum property.
+	 * 
+	 * @return possible object is {@link String }
+	 */
+	public String getHistSeqNum() {
+		return histSeqNum;
+	}
+
+	/**
+	 * Sets the value of the histSeqNum property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 */
+	public void setHistSeqNum(String value) {
+		this.histSeqNum = value;
+	}
 
 }

@@ -16,8 +16,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 /**
@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
  */
 @XmlAccessorType (XmlAccessType.FIELD)
 @XmlType (name = "getMultiOnHandRes", propOrder = { "multiOnHandResHdr", "itemDetails" })
-@XmlRootElement (name = "getMultiOnHandRes")
+@XmlRootElement (name = "getMultiOnHandRes", namespace = "http://is.mvs.staples.com/")
 @JsonAutoDetect (getterVisibility = Visibility.PROTECTED_AND_PUBLIC,
 				setterVisibility = Visibility.PROTECTED_AND_PUBLIC, fieldVisibility = Visibility.PROTECTED_AND_PUBLIC)
 @JsonInclude (Include.NON_NULL)
@@ -52,55 +52,44 @@ public class GetMultiOnHandRes implements Serializable {
 	 */
 	private static final long serialVersionUID = -4856385647835631L;
 
-	@XmlElement(required = true)
-    protected GetMultiOnHandResHdrType multiOnHandResHdr;
-    protected GetAllitemsDetailResType itemDetails;
+	@XmlElement (required = true, namespace = "http://is.mvs.staples.com/")
+	protected GetMultiOnHandResHdrType multiOnHandResHdr;
+	@XmlElement (required = true, namespace = "http://is.mvs.staples.com/")
+	protected GetAllitemsDetailResType itemDetails;
 
-    /**
-     * Gets the value of the multiOnHandResHdr property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link GetMultiOnHandResHdrType }
-     *     
-     */
-    public GetMultiOnHandResHdrType getMultiOnHandResHdr() {
-        return multiOnHandResHdr;
-    }
+	/**
+	 * Gets the value of the multiOnHandResHdr property.
+	 * 
+	 * @return possible object is {@link GetMultiOnHandResHdrType }
+	 */
+	public GetMultiOnHandResHdrType getMultiOnHandResHdr() {
+		return multiOnHandResHdr;
+	}
 
-    /**
-     * Sets the value of the multiOnHandResHdr property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link GetMultiOnHandResHdrType }
-     *     
-     */
-    public void setMultiOnHandResHdr(GetMultiOnHandResHdrType value) {
-        this.multiOnHandResHdr = value;
-    }
+	/**
+	 * Sets the value of the multiOnHandResHdr property.
+	 * 
+	 * @param value allowed object is {@link GetMultiOnHandResHdrType }
+	 */
+	public void setMultiOnHandResHdr(GetMultiOnHandResHdrType value) {
+		this.multiOnHandResHdr = value;
+	}
 
-    /**
-     * Gets the value of the itemDetails property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link GetAllitemsDetailResType }
-     *     
-     */
-    public GetAllitemsDetailResType getItemDetails() {
-        return itemDetails;
-    }
+	/**
+	 * Gets the value of the itemDetails property.
+	 * 
+	 * @return possible object is {@link GetAllitemsDetailResType }
+	 */
+	public GetAllitemsDetailResType getItemDetails() {
+		return itemDetails;
+	}
 
-    /**
-     * Sets the value of the itemDetails property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link GetAllitemsDetailResType }
-     *     
-     */
-    public void setItemDetails(GetAllitemsDetailResType value) {
-        this.itemDetails = value;
-    }
+	/**
+	 * Sets the value of the itemDetails property.
+	 * 
+	 * @param value allowed object is {@link GetAllitemsDetailResType }
+	 */
+	public void setItemDetails(GetAllitemsDetailResType value) {
+		this.itemDetails = value;
+	}
 }

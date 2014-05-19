@@ -1,8 +1,11 @@
 package com.staples.asgard.core.domain.model.inventory;
 
+import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -34,20 +37,31 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType (XmlAccessType.FIELD)
 @XmlType (name = "responseItem", propOrder = { "itemId", "storeNum", "availQty", "damageQty", "displayQty",
 	"softAllocQty", "onHandQty", "status", "statusDesc" })
-public class ResponseItem {
+@XmlRootElement (name = "item", namespace = "http://is.mvs.staples.com/")
+public class ResponseItem implements Serializable {
 
-	@XmlElement (required = true)
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 823648234631L;
+
+	@XmlElement (required = true, namespace = "http://is.mvs.staples.com/")
 	protected String itemId;
-	@XmlElement (required = true)
+	@XmlElement (required = true, namespace = "http://is.mvs.staples.com/")
 	protected String storeNum;
+	@XmlElement (namespace = "http://is.mvs.staples.com/")
 	protected String availQty;
+	@XmlElement (namespace = "http://is.mvs.staples.com/")
 	protected String damageQty;
+	@XmlElement (namespace = "http://is.mvs.staples.com/")
 	protected String displayQty;
+	@XmlElement (namespace = "http://is.mvs.staples.com/")
 	protected String softAllocQty;
+	@XmlElement (namespace = "http://is.mvs.staples.com/")
 	protected String onHandQty;
-	@XmlElement (required = true)
+	@XmlElement (required = true, namespace = "http://is.mvs.staples.com/")
 	protected String status;
-	@XmlElement (required = true)
+	@XmlElement (required = true, namespace = "http://is.mvs.staples.com/")
 	protected String statusDesc;
 
 	public ResponseItem() {
