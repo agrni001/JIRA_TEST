@@ -30,39 +30,52 @@ import com.staples.asgard.core.util.SpringBeanNameAwareWrapper;
 @ManagedResource(objectName = "com.staples.asgard.core.config.model:name=PriceConfig", description = "PRICE Configuration")
 public class PriceConfig extends SpringBeanNameAwareWrapper {
 
-	@Autowired
-	private ConfigService configService;
+    @Autowired
+    private ConfigService configService;
 
-	@InitializedAttribute
-	private boolean initialized = false;
+    @InitializedAttribute
+    private boolean initialized = false;
 
-	@ConfigAttribute(activeFlag = "true")
-	private String defaultZone;
+    @ConfigAttribute(activeFlag = "true")
+    private String defaultZone;
 
-	@ManagedAttribute(description = "defaultZone")
-	public String getDefaultZone() {
-		return defaultZone;
-	}
+    @ConfigAttribute(activeFlag = "true")
+    private boolean standAlone = false;
 
-	public void setDefaultZone(String defaultZone) {
-		this.defaultZone = defaultZone;
-	}
-	
-	/**
-	 * @return the initialized
-	 */
-	@ManagedAttribute(description = "Initialized")
-	public boolean isInitialized() {
-		return initialized;
-	}
+    @ManagedAttribute(description = "defaultZone")
+    public String getDefaultZone() {
+        return defaultZone;
+    }
 
-	/**
-	 * @param initialized
-	 *            the initialized to set
-	 */
-	@ManagedAttribute(description = "Initialized configuration")
-	public void setInitialized(boolean initialized) {
-		this.initialized = initialized;
-	}
+    public void setDefaultZone(String defaultZone) {
+        this.defaultZone = defaultZone;
+    }
+
+    /**
+     * @return the initialized
+     */
+    @ManagedAttribute(description = "Initialized")
+    public boolean isInitialized() {
+        return initialized;
+    }
+
+    /**
+     * @param initialized
+     *            the initialized to set
+     */
+    @ManagedAttribute(description = "Initialized configuration")
+    public void setInitialized(boolean initialized) {
+        this.initialized = initialized;
+    }
+
+    @ManagedAttribute(description = "standAlone")
+    public boolean getStandAlone() {
+        return standAlone;
+    }
+
+    @ManagedAttribute(description = "standAlone configuration")
+    public void setStandAlone(boolean standAlone) {
+        this.standAlone = standAlone;
+    }
 
 }
