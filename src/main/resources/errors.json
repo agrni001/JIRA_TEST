@@ -71,6 +71,10 @@
         "JBS-PR-004": {
             "code": "JBS-PR-004",
             "msg": "Price Input Parameter Validation failed"
-        }
+        },
+        "JBS-MH-001": {
+            "code": "JBS-MH-001",
+            "msg": "Error with the Multi-On-Hand Service Response"
+        }        
     }
 }
