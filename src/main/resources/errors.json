@@ -74,7 +74,7 @@
         },
         "JBS-MH-001": {
             "code": "JBS-MH-001",
-            "msg": "Error with the Multi-On-Hand Service Response"
+            "msg": "Error Connecting to Multi On Hand Service"
         },
         "JBS-MH-002": {
             "code": "JBS-MH-002",
