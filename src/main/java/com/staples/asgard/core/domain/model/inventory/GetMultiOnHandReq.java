@@ -95,7 +95,11 @@ public class GetMultiOnHandReq implements Serializable {
 				this.setRequesterId(requestParaMultiValueMap.get("requesterId").get(0));
 			}
 			if (requestParaMultiValueMap.get("locale") != null) {
-				this.setLocale(requestParaMultiValueMap.get("locale").get(0));
+				// Validation to check if the Locale Entry contains the "-" character
+				String localeRequestParam = (String) requestParaMultiValueMap.get("locale").get(0);
+				if (localeRequestParam.indexOf("-") == 2) {
+					this.setLocale(localeRequestParam.replace("-", "_"));
+				}
 			}
 		} catch (Exception exception) {
 			exception.printStackTrace();
