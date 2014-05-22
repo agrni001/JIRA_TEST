@@ -64,13 +64,13 @@ public class Offers {
 		return minimumqty;
 	}
 
-	private java.lang.Integer offer_id;
+	private java.lang.String offer_id;
 
-	public void setOffer_id(java.lang.Integer offer_id) {
+	public void setOffer_id(java.lang.String offer_id) {
 		this.offer_id = offer_id;
 	}
 
-	public java.lang.Integer getOffer_id() {
+	public java.lang.String getOffer_id() {
 		return offer_id;
 	}
 
