@@ -25,6 +25,8 @@ public class PriceResponse {
 			DEFAULT_SCALE, DEFAULT_RM);
 	private BigDecimal totalSavings = new BigDecimal(0).setScale(DEFAULT_SCALE,
 			DEFAULT_RM);
+	private BigDecimal manufacturerPrice = new BigDecimal(0).setScale(
+			DEFAULT_SCALE, DEFAULT_RM);
 
 	private boolean displayRegPricing = false;
 	private boolean displayWasPricing = false;
@@ -148,6 +150,14 @@ public class PriceResponse {
 
 	public void setNoDataFound(boolean noDataFound) {
 		this.noDataFound = noDataFound;
+	}
+
+	public BigDecimal getManufacturerPrice() {
+		return manufacturerPrice;
+	}
+
+	public void setManufacturerPrice(BigDecimal manufacturerPrice) {
+		this.manufacturerPrice = manufacturerPrice;
 	}
 
 }
