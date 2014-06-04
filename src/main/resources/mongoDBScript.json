@@ -1,3 +1,0 @@
-{  "storeId" : "10001", "serverId" : "DEFAULT_SERVER", "beanId" : "CoreConfig", "configKey" : "integrationGatewayReadTimeout", "configValue" : "5000", "changedBy" : "Jayant", "description" : "Integration gateway read Timeout", "lastUpdated" : "Thu March 20 14:43:08 IST 2014" }
-,{  "storeId" : "10001", "serverId" : "DEFAULT_SERVER", "beanId" : "CoreConfig", "configKey" : "integrationGatewayConnectTimeout", "configValue" : "5000", "changedBy" : "Jayant", "description" : "Integration gateway connection Timeout", "lastUpdated" : "Thu March 20 14:43:08 IST 2014" }
-
