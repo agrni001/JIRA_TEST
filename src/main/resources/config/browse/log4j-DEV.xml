@@ -4,8 +4,7 @@
 	<!-- *************************************** START - APPENDERS *************************************** -->
 	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
 		<param name="Target" value="System.out" />
-		<param name="MaxFileSize" value="100M" />
-		<param name="MaxBackupIndex" value="15" />
+		 
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d{ABSOLUTE} | %-5p | %x | %t | %c | %m%n" />
 		</layout>
@@ -14,7 +13,7 @@
 	<appender name="DEBUG" class="org.apache.log4j.RollingFileAppender">
 		<param name="file" value="${tc.instance.home}/logs/browse-debug.log" />
 		<param name="append" value="true" />
-		<param name="MaxFileSize" value="100M" />
+		<param name="MaxFileSize" value="100" />
 		<param name="MaxBackupIndex" value="5" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss,SSS} [%t] %c %x %p- %m%n" />
@@ -24,7 +23,7 @@
 	<appender name="SYSTEM" class="org.apache.log4j.RollingFileAppender">
 		<param name="file" value="${tc.instance.home}/logs/browse-system.log" />
 		<param name="append" value="true" />
-		<param name="MaxFileSize" value="100M" />
+		<param name="MaxFileSize" value="100" />
 		<param name="MaxBackupIndex" value="5" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss,SSS} [%t] %c %x %p- %m%n" />
@@ -33,7 +32,7 @@
 
 	<appender name="EXCEPTION" class="org.apache.log4j.RollingFileAppender">
 		<param name="file" value="${tc.instance.home}/logs/browse-exception.log" />
-		<param name="MaxFileSize" value="100M" />
+		<param name="MaxFileSize" value="100" />
 		<param name="MaxBackupIndex" value="15" />
 		<param name="Threshold" value="ERROR" />
 		<param name="Append" value="true" />
