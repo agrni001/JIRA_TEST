@@ -41,10 +41,16 @@ public class BaseLoggingInterceptor {
 	 *             re-thrown by the interceptor
 	 */
 	public Object methodLogging(ProceedingJoinPoint pjp) throws Throwable {
-		boolean isMethodEntryExitEnabled = Boolean.valueOf(messageSource.getMessage(GlobalConstants.METHOD_LEVEL_TRACE, null,
-				GlobalConstants.FALSE_STRING, null));
+		
 		boolean isMethodPerfEnabled = Boolean.valueOf(messageSource.getMessage(GlobalConstants.PERF_TRACE, null, GlobalConstants.FALSE_STRING, null));
  
+		if (!isMethodPerfEnabled )
+			 return pjp.proceed();
+		
+		
+		boolean isMethodEntryExitEnabled = Boolean.valueOf(messageSource.getMessage(GlobalConstants.METHOD_LEVEL_TRACE, null,
+				GlobalConstants.FALSE_STRING, null));
+		
 		Class<? extends Object> targetClass = pjp.getTarget().getClass();
 		String methodName = null;
 		String methodArgsAsString = convertObjectArrayToString(pjp.getArgs());
@@ -96,7 +102,7 @@ public class BaseLoggingInterceptor {
 		builder.append(GlobalConstants.LOG_METHOD_EXECUTION_IS);
 		builder.append(timer.getTotalTimeMillis());
 		builder.append(GlobalConstants.LOG_METHOD_EXECUTION_TIME_LIMIT);
-		LOG.info(builder.toString());
+		LOG.debug(builder.toString());
 	}
 
 	/**
@@ -114,7 +120,7 @@ public class BaseLoggingInterceptor {
 		StringBuilder builder = new StringBuilder();
 		builder.append(GlobalConstants.LOG_METHOD_ENTER + targetClass);
 		builder = constructMethodInfo(methodName, methodArgsAsString, builder);
-		LOG.info(builder.toString());
+		LOG.debug(builder.toString());
 	}
 
 	/**
@@ -132,7 +138,7 @@ public class BaseLoggingInterceptor {
 		StringBuilder builder = new StringBuilder();
 		builder.append(GlobalConstants.LOG_METHOD_EXIT + targetClass);
 		builder = constructMethodInfo(methodName, methodArgsAsString, builder);
-		LOG.info(builder.toString());
+		LOG.debug(builder.toString());
 	}
 
 	/**

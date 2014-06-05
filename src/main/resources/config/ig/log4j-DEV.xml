@@ -46,27 +46,27 @@
 	<!-- *************************************** START - LOGGERS *************************************** -->
 
 	<logger name="com.staples" additivity="false">
-		<level value="info" />
+		<level value="debug" />
 		<appender-ref ref="DEBUG" />
 		<appender-ref ref="CONSOLE" />
 	</logger>
 
 	<logger name="com.staples.asgard.core.logger.BaseLoggingInterceptor"
 		additivity="false">
-		<level value="info" />
+		<level value="debug" />
 		<appender-ref ref="DEBUG" />
 		<appender-ref ref="CONSOLE" />
 	</logger>
 
 	<logger name="org.springframework" additivity="false">
-		<level value="info" />
+		<level value="debug" />
 		<appender-ref ref="SYSTEM" />
 	</logger>
 
 	<!-- *************************************** END - LOGGERS *************************************** -->
 
 	<root>
-		<priority value="INFO" />		
+		<priority value="debug" />		
 		<appender-ref ref="CONSOLE" />
 	</root>
 </log4j:configuration>
