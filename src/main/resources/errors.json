@@ -1,5 +1,13 @@
 {
     "errors": {
+    	 "JBS-TF-001": {
+             "code": "JBS-TF-001",
+             "msg": "Error in Test Flow reponse"
+         },
+         "JBS-TF-002": {
+             "code": "JBS-TF-002",
+             "msg": "Error validating Test Flow request"
+         },
         "JBS-CT-001": {
             "code": "JBS-CT-001",
             "msg": "Error in Certona reponse"
