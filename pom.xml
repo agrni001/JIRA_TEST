@@ -6,6 +6,7 @@
 	<name>Asgard Java Framework</name>
 	<description>Asgard Core Library</description>
 
+
 	<parent>
 		<groupId>com.staples.asgard</groupId>
 		<artifactId>asgard</artifactId>
