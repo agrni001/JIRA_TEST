@@ -46,7 +46,7 @@ public class ErrorJsonMap {
 	public void init() {
 		JSONParser parser = new JSONParser();
 		try {
-			LOG.info("Tiest errors.json");
+			LOG.info("Test errors.json");
 
 			Object obj = parser.parse(new BufferedReader(new InputStreamReader(
 					Thread.currentThread().getContextClassLoader()
@@ -55,8 +55,7 @@ public class ErrorJsonMap {
 			LOG.info("obj : " + obj);
 
 			if (null != obj) {
-				LOG.info("obj : " + obj);
-				JSONObject jsonObject = (JSONObject) obj;
+ 				JSONObject jsonObject = (JSONObject) obj;
 				JSONObject errors = (JSONObject) jsonObject.get("errors");
 				Iterator iter = errors.entrySet().iterator();
 
