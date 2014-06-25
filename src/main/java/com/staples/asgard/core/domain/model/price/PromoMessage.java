@@ -62,6 +62,16 @@ public class PromoMessage {
 	public java.lang.Integer getTypeid() {
 		return typeid;
 	}
+	
+	private java.lang.String type_name;
+
+	public void setType_name(java.lang.String type_name) {
+		this.type_name = type_name;
+	}
+
+	public java.lang.String getType_name() {
+		return type_name;
+	}
 
 	private java.lang.String name;
 
