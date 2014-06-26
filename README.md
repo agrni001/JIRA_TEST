@@ -1,4 +1,4 @@
-# Asgard Core Java Framework
+# Core Java Framework
 
 ## Introduction
 The core java framework will contain common code used across all services (war) and framework pieces (jars). 
@@ -31,7 +31,7 @@ that matches the current running ServerId, the BeanId with the ConfigKey and Con
 ### Test Cases
 For documentation on writing test cases, please refer to this
 
-http://confluence.staples.com/display/ATT/Asgard+-+Team+Space
+
 
 
 #### ConfigSyncAspectTest
